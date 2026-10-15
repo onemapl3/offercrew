@@ -1,0 +1,17 @@
+/* Evidence is a step record. Keep the readable summary separate from diagnostics. */
+.ev-context{margin:0;padding:12px 18px 0;color:var(--muted);font-size:13px;line-height:1.6}
+.ev-body{padding:18px}
+.ev-summary{margin:0;display:grid;gap:0;font-size:14px;line-height:1.65}
+.ev-summary>div{display:grid;grid-template-columns:130px minmax(0,1fr);gap:16px;padding:10px 0;border-bottom:1px solid var(--border)}
+.ev-summary>div:first-child{padding-top:0}
+.ev-summary dt{color:var(--muted);font-size:12px}
+.ev-summary dd{margin:0;overflow-wrap:anywhere;white-space:pre-line}
+.ev-raw{margin-top:18px;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.ev-raw summary{padding:10px 12px;cursor:pointer;font-size:12px;color:var(--muted);background:var(--bg)}
+.ev-raw .ev-text{padding:12px;max-height:50vh;overflow:auto;background:var(--bg)}
+.ev-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;border-top:1px solid var(--border);padding:12px 18px;font-size:12px;color:var(--muted);line-height:1.6}
+.ev-foot a{flex-shrink:0}
+.ev-msg{line-height:1.7}
+.ev-msg a{margin-inline:4px}
+.ev-frame{margin-top:12px;background:white}
+@media(max-width:600px){.ev-summary>div{grid-template-columns:1fr;gap:3px}.ev-body{padding:14px}.ev-foot{align-items:flex-start;flex-direction:column;gap:6px}.ev-head{padding:12px 14px}}

@@ -1,0 +1,34 @@
+{
+  "text": {
+    "driver": "backends",
+    "auth_file": "private/claude-api.auth.json",
+    "timeout_ms": 120000,
+    "max_tokens": 4000,
+    "backends": [
+      {
+        "provider": "claude_subscription",
+        "model": "sonnet"
+      },
+      {
+        "provider": "openai",
+        "model": "default",
+        "effort": "medium"
+      }
+    ]
+  },
+  "vision": {
+    "driver": "backends",
+    "timeout_ms": 240000,
+    "backends": [
+      {
+        "provider": "openai",
+        "model": "default",
+        "effort": "medium"
+      }
+    ]
+  },
+  "timeout_ms": 240000,
+  "concurrency": 1,
+  "legacy": "private/lowcost-legacy.auth.json is retained but never selected by default",
+  "note": "文字生成、对话和执行器按清单顺序试，只有供应商类故障才换下一条。模型写通用的：Claude 用别名 sonnet / opus（Claude Code 会换成你账号里有的那个型号），Codex 写 default = 用 codex 自己的默认模型。换成具体型号、加 API 供应商都在工作台「设置 → 模型与参数」里做；改过之后就是本机文件，不进仓库。claude_subscription 用你本机 claude 的登录（Claude 订阅）；只有 ~/.claude/settings.json 把 ANTHROPIC_* 指到别的网关、又想走官方订阅时，才需要在 config/providers.json 里给 claude_subscription 配一个独立的 config_dir，再自己在终端跑一次 CLAUDE_CONFIG_DIR=<那个目录> claude auth login。图片识别走 Codex（claude -p 驱动不收图片）。"
+}

@@ -1,0 +1,183 @@
+# 职能与管培公司包（起步清单）：快消、汽车、零售餐饮的管培生和职能岗，外加大厂。
+# 给「人力 / 行政」「市场」「销售 / 商务」「项目管理」四个方向用。
+#
+# 这是起步清单，不会自动被扫描：把你想要的那几段复制到 config/companies.yaml（你自己的公司清单，本机文件），
+# 下一轮 node bin/discover.mjs 才会去读。写法和 config/companies.yaml 完全一样，多出来的三项：
+#   group    分组：fmcg 快消 · auto 汽车 · retail 零售和餐饮 · big_tech 大厂
+#   presets  这家公司招哪些方向的人：hr_admin 人力 / 行政 · marketing 市场 · sales 销售 / 商务 · project_management 项目管理
+#   why      为什么在包里、核对时读到了什么
+#
+# 每一家都在 2026-10-02 用现有适配器只读核过（沙盒、演示数据，先看 robots.txt 放行再读）。
+# 数字的口径：社招、校招、实习三类都读，只数落在北京、上海、深圳、广州、杭州、香港六个城市里的岗位；
+# Workday 上的外企按国家筛，数的是筛完的全部。平时扫描按你的阶段和城市来，数目会不一样。
+# 大厂没有写 queries：按你的方向自动换搜索词（市场、销售、HRBP、项目经理……，lib/directions.mjs）。
+# 核对时四个方向的词各取几个一起搜（市场、品牌、营销、销售、大客户、商务拓展、招聘、HRBP、人力资源、行政、
+# 项目经理、PMO），每个词翻两页；只选一个方向时读到的会少一些。
+# 读不到、或者还没有适配器的公司列在文件最后，不在包里。
+
+# ── 快消 ─────────────────────────────────────────────────────────────────
+- name: 宝洁
+  hq: 广州
+  group: fmcg
+  ats_type: moka
+  org_id: pg
+  site_id: 91934
+  site_path: social-recruitment
+  careers_url: https://app.mokahr.com/social-recruitment/pg/91934
+  presets: [marketing, sales, hr_admin]
+  why: 快消，品牌管理、销售岗多；Moka 社招站（官网 careers.pg.com.cn 是展示页，岗位在这里）。2026-10-02 读到社招 32
+- name: 雀巢
+  hq: 北京
+  group: fmcg
+  ats_type: moka
+  org_id: nestlegcr
+  site_id: 91898
+  site_path: social-recruitment
+  campus_site_id: [91899]
+  careers_url: https://app.mokahr.com/social-recruitment/nestlegcr/91898
+  presets: [sales, marketing, hr_admin]
+  why: 快消；Moka 社招站加校招站（校招站全是销售、市场、人力管培生），接口用的编号适配器从页面取。2026-10-02 读到社招 95、校招 29、实习 6
+- name: 百威
+  hq: 上海
+  group: fmcg
+  ats_type: moka
+  org_id: budweiser
+  site_id: 148096
+  site_path: social-recruitment
+  campus_site_id: [148097]
+  unlisted_city: keep
+  careers_url: https://app.mokahr.com/social-recruitment/budweiser/148096
+  presets: [sales, marketing, hr_admin]
+  why: 快消，各地销售主管、管培生；Moka。管培生和不少社招岗位不写城市，所以没写城市的也留下（unlisted_city），交给判断读 JD 核城市。2026-10-02 读到社招 58、校招 11（其中 53 个没写城市）
+- name: 可口可乐
+  hq: 上海
+  group: fmcg
+  ats_type: workday
+  origin: https://coke.wd1.myworkdayjobs.com
+  tenant: coke
+  site: coca-cola-careers
+  applied_facets:
+    locationCountry: [6cb77610a8a543aea2d6bc10457e35d4]
+  careers_url: https://coke.wd1.myworkdayjobs.com/coca-cola-careers
+  presets: [marketing, hr_admin, sales]
+  why: 快消，可口可乐公司中国（不是装瓶厂）；Workday，只读「中国」这个国家筛选。2026-10-02 读到 18 个（上海 14、北京 2、广州 1），偏资深
+- name: 蒙牛
+  hq: 北京
+  group: fmcg
+  ats_type: beisen
+  origin: https://mengniu.zhiye.com
+  portal_id: cb59e44a-c225-4d22-817a-8e58fa42add2
+  careers_url: https://mengniu.zhiye.com/custom/index
+  presets: [sales, marketing, hr_admin]
+  why: 快消，KA、城市经理和「未来星」管培生；北森。2026-10-02 读到社招 38、校招 69、实习 2
+
+# ── 汽车 ─────────────────────────────────────────────────────────────────
+- name: 特斯拉
+  hq: 上海
+  group: auto
+  ats_type: moka
+  org_id: tesla
+  site_id: 46129
+  site_path: social-recruitment
+  campus_site_id: [41460]
+  careers_url: https://app.mokahr.com/social-recruitment/tesla/46129
+  presets: [sales, project_management, marketing, hr_admin]
+  why: 汽车，销售、交付、职能岗和 PMO 实习；Moka 社招站加校招站。2026-10-02 读到社招 148、校招 74、实习 57
+- name: 蔚来
+  hq: 上海
+  group: auto
+  ats_type: larkhire
+  board: nio
+  origin: https://nio.jobs.feishu.cn
+  position_path: /index/position
+  max_pages: 2
+  careers_url: https://nio.jobs.feishu.cn/index
+  presets: [marketing, sales, project_management, hr_admin]
+  why: 汽车，用户运营、商务拓展、项目管理岗多；飞书招聘社招门户，2026-10-02 读到社招 207
+- name: 蔚来（校招）
+  hq: 上海
+  group: auto
+  ats_type: larkhire
+  board: nio-campus
+  origin: https://nio.jobs.feishu.cn
+  website_path: campus
+  portal_type: 1
+  position_path: /campus/position
+  max_pages: 2
+  careers_url: https://nio.jobs.feishu.cn/campus
+  presets: [marketing, sales, project_management, hr_admin]
+  why: 蔚来的校招门户（同一个飞书招聘租户，website_path 和 portal_type 不同）。2026-10-02 读到校招 95、实习 21
+
+# ── 零售和餐饮 ────────────────────────────────────────────────────────────
+- name: 星巴克中国
+  hq: 上海
+  group: retail
+  ats_type: beisen
+  origin: https://starbucks.zhiye.com
+  portal_id: 447d00df-76b1-4da9-a0c5-287e2adb7b0c
+  classification_one: ['3']
+  careers_url: https://starbucks.zhiye.com/social/jobs
+  presets: [hr_admin, marketing, project_management]
+  why: 零售餐饮；北森社招一万八千多个几乎全是门店咖啡师，所以只读「职能支持」这一类（classification_one 3）。2026-10-02 读到职能岗 45
+
+# ── 大厂 ─────────────────────────────────────────────────────────────────
+- name: 字节跳动
+  hq: 北京
+  group: big_tech
+  ats_type: larkhire
+  board: bytedance
+  origin: https://jobs.bytedance.com
+  position_path: /experienced/position
+  max_pages: 2
+  careers_url: https://jobs.bytedance.com/experienced/position
+  presets: [marketing, sales, hr_admin, project_management]
+  why: 大厂，市场、商务、HRBP 岗位最多；飞书招聘（larkhire），2026-10-02 按上面的词读到社招 845
+- name: 阿里巴巴集团
+  hq: 杭州
+  group: big_tech
+  ats_type: alitalent
+  board: alibaba
+  origin: https://talent.alibaba.com
+  detail_origin: https://talent-holding.alibaba.com
+  max_pages: 2
+  careers_url: https://talent-holding.alibaba.com/off-campus/position-list?lang=zh
+  presets: [marketing, sales, hr_admin, project_management]
+  why: 大厂；阿里系招聘站（alitalent），2026-10-02 按上面的词读到社招 251
+- name: 腾讯
+  hq: 深圳
+  group: big_tech
+  ats_type: tencent
+  board: tencent
+  origin: https://careers.tencent.com
+  max_pages: 2
+  careers_url: https://careers.tencent.com/search.html
+  presets: [marketing, sales, hr_admin, project_management]
+  why: 大厂；腾讯招聘（tencent），2026-10-02 按上面的词读到社招 269、校招 70、实习 104
+- name: 网易
+  hq: 杭州
+  group: big_tech
+  ats_type: netease
+  board: netease
+  origin: https://hr.163.com
+  max_pages: 2
+  careers_url: https://hr.163.com/job-list.html
+  presets: [marketing, sales, hr_admin, project_management]
+  why: 大厂；网易招聘（netease），社招列表里混着管培生，2026-10-02 按上面的词读到 446 个
+
+# ── 没收进来的（不在包里）────────────────────────────────────────────────────
+# robots.txt 禁止（招聘系统能读也不读）：
+#   玛氏 Workday（mars.wd3 /External/）、耐克 Workday（nike.wd1 /nke/）：各自的 robots.txt 禁了这个站点
+#   宜家 jobs.ikeachina.cn 的搜索页和 Avature 门户 ikeachina.avature.cn（整站禁止）
+#   理想汽车 www.lixiang.com/employ.html：带问号的地址全部禁止，按职能筛读不了
+# 只放入口（自己打开看，不自动读）：
+#   联合利华 www.unilever.com.cn/careers/：中国官网 403，全球 Workday 上没有中国岗位
+#   美的 careers.midea.com · 华润 runjob.crc.com.cn · 比亚迪 job.byd.com：自建，列表接口没核实
+#   太古可口可乐 careers.swirecocacola.com：自建，10-01 调研时接口给 0 个，背后的招聘系统不明
+#   麦当劳中国：岗位在微信里，网页只有二维码
+# 要新写适配器：
+#   欧莱雅 careers.loreal.com、达能 careers.danone.com.cn（Avature）
+#   伊利 yili.hotjob.cn：大易老版（/wt/ 地址），翻页要页面令牌，hotjob 适配器不读老版
+#   百事 www.moseeker.com（仟寻）· 阿迪达斯 careers.adidas-group.com（XML 订阅源）· 海尔 maker.haier.net（自建，有公开接口）
+#   玛氏 careers.mars.com（Phenom 前台）· 耐克 careers.nike.com（Paradox 前台）
+# 当天 0 个：
+#   可口可乐校招站（coke.wd1 /coca_cola_college/）：robots 放行，2026-10-02 读到 0 个

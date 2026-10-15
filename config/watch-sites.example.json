@@ -1,0 +1,11 @@
+{
+  "note": "要定期扫的招聘搜索页（通用路径，不写代码适配器）。本机 AI 用专用 Chrome 打开，列出岗位链接，对新链接逐条 node bin/add-lead.mjs。已有代码适配器的公司（companies.yaml ats_type）不必放这里。在飞书群里贴一个列表页链接，系统也会把它记到本机文件 config/watch-sites.json（不进仓库）。",
+  "sites": [
+    {
+      "company": "Microsoft",
+      "url": "https://apply.careers.microsoft.com/careers?query=software&start=0&location=shanghai",
+      "note": "示例：一个搜索页作为备份路径（已有 ats_type: microsoft 适配器时可删）。",
+      "added_at": null
+    }
+  ]
+}

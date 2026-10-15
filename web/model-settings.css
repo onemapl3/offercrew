@@ -1,0 +1,94 @@
+/* 模型设置：一个接入来源和一个默认模型；连接管理与诊断按需展开。 */
+.ms,.st-ms .ms{display:grid;gap:20px;padding:0;min-width:0}
+.ms [hidden]{display:none!important}
+.ms h3,.ms h4,.ms p{margin:0}
+.ms-h{display:flex;align-items:baseline;gap:10px;font-size:14px;font-weight:600;color:var(--ink,#263a31)}
+.ms-h small{font-size:12px;font-weight:400;color:var(--muted)}
+.ms-acts,.ms-form-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.ms-acts{margin-left:auto}
+.ms-acts a{font-size:12.5px;color:var(--green)}
+.ms-acts .mini,.ms-form-actions .mini{white-space:normal}
+.ms-msg{font-size:12.5px;line-height:1.6;overflow-wrap:anywhere}
+.ms-warn{color:#8a5a12}
+.ms-bad{color:var(--red)}
+.ms small,.ms p.small{font-size:12.5px;line-height:1.6}
+.ms small,.ms p{overflow-wrap:anywhere}
+.ms-mn{display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:3px 6px;min-width:0;overflow-wrap:anywhere}
+.ms-mn b{font-weight:500}
+.ms-mn>span{color:var(--muted)}
+.ms-mn code,.ms-model-id{font-size:11.5px;color:var(--muted);overflow-wrap:anywhere}
+.ms-tags{display:inline-flex;flex-wrap:wrap;gap:4px;vertical-align:middle}
+.ms-tag{display:inline-block;font-size:11px;line-height:1.6;padding:0 7px;border-radius:99px;background:#eef2ef;color:#5b6d64}
+.ms-tag.ok{background:#e3efe8;color:var(--green)}
+.ms-tag.bad{background:#f7e3e1;color:var(--red)}
+.ms-tag.warn{background:#f8eedb;color:#8a5a14}
+.ms-def,.ms-source{display:grid;gap:14px;border:1px solid var(--border);border-radius:12px;padding:16px 18px;background:#fff;min-width:0}
+.ms-def-head{display:flex;gap:10px 14px;align-items:flex-start}
+.ms-def-main{display:grid;gap:4px;flex:1;min-width:0}
+.ms-eyebrow{font-size:12px;color:var(--muted)}
+.ms-def-name{font-size:16px;line-height:1.55}
+.ms-def-name .ms-mn b{font-weight:600}
+.ms-def .ms-acts{flex:none}
+.ms-kv{display:flex;flex-wrap:wrap;align-items:baseline;gap:3px 8px;font-size:13px;min-width:0}
+.ms-k{font-size:12px;color:var(--muted)}
+.ms-chain,.ms-steps{margin:0;padding-left:18px;display:grid;gap:6px;min-width:0;font-size:12.5px}
+.ms-chain .ms-tags{margin-left:6px}
+.ms-last{display:flex;flex-wrap:wrap;align-items:baseline;gap:3px 8px;font-size:12.5px}
+.ms-last small{color:var(--muted)}
+.ms-last .ms-warn{flex-basis:100%;color:#8a5a12}
+.ms-details{min-width:0;border-top:1px solid var(--border);padding-top:10px}
+.ms-details>summary{cursor:pointer;font-size:12.5px;color:var(--green);line-height:1.6}
+.ms-details.warn>summary{color:#8a5a12}
+.ms-detail-body{display:grid;gap:12px;padding-top:12px;min-width:0}
+.ms-detail-body>.ms-acts{margin-left:0}
+.ms-sources{display:flex;gap:6px;flex-wrap:wrap}
+.ms-sources button{flex:1 1 auto;min-width:0;border:1px solid var(--border);border-radius:8px;background:#fff;padding:8px 12px;font:inherit;font-size:13px;color:var(--muted);cursor:pointer;line-height:1.5}
+.ms-sources button[aria-selected=true]{border-color:var(--green);background:#eef5f1;color:var(--green);font-weight:600}
+.ms-sources button:focus-visible,.ms select:focus-visible,.ms input:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+.ms-sources button:disabled{cursor:default;opacity:.6}
+.ms-source-panel,.ms-model-form,.ms-role-section{display:grid;gap:14px;min-width:0}
+.ms-model-fields{display:grid;align-items:start;grid-template-columns:repeat(auto-fit,minmax(min(210px,100%),1fr));gap:12px;min-width:0}
+.ms-f{display:grid;gap:5px;font-size:12.5px;color:#35483f;min-width:0}
+.ms-f input,.ms-f select{box-sizing:border-box;width:100%;max-width:100%;min-width:0;border:1px solid var(--border);border-radius:8px;padding:8px 10px;background:#fff;color:inherit;font-family:inherit;font-size:13px;line-height:1.5}
+.ms-f select{height:38px;text-overflow:ellipsis}
+.ms-f select:disabled{color:var(--muted);background:#f5f7f6}
+.ms-model-state{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:baseline}
+.ms-model-state>small{flex-basis:100%}
+.ms-free-status{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;font-size:13px;min-width:0}
+.ms-free-status>span{overflow-wrap:anywhere}
+.ms-free-status>button{margin-left:auto}
+.ms-roles{border:1px solid var(--border);border-radius:12px;background:#fff;min-width:0}
+.ms-role{display:grid;gap:10px;padding:13px 16px;border-top:1px solid #eef2ef;min-width:0}
+.ms-role:first-child{border-top:0}
+.ms-role.open{background:#fbfcfb}
+.ms-role-head{display:flex;align-items:flex-start;gap:8px 12px}
+.ms-role-main{flex:1;min-width:0;display:grid;gap:4px}
+.ms-role-main>b{font-size:13.5px;font-weight:600;line-height:1.6}
+.ms-role-main>b>small{font-size:11.5px;font-weight:400;color:var(--muted);margin-left:6px}
+.ms-role-main .ms-kv{color:#5b6d64;font-size:12.5px}
+.ms-solo .ms-role{border:1px solid var(--border);border-radius:10px;background:#fff}
+.ms-pick{display:grid;gap:12px;border-top:1px solid var(--border);padding-top:12px;min-width:0}
+.ms-warn-box{border:1px solid #e3c58f;background:#fdf8ee;border-radius:8px;padding:8px 12px;font-size:12.5px;color:#6d4a10;overflow-wrap:anywhere}
+.ms-addbox{display:grid;gap:12px;border-top:1px solid var(--border);padding-top:12px;min-width:0}
+.ms-sub-h{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:13px;font-weight:600}
+.ms-seg{display:flex;flex-wrap:wrap;gap:6px}
+.ms-seg button{border:1px solid var(--border);border-radius:8px;background:#fff;padding:6px 10px;font-family:inherit;font-size:12px;color:var(--muted);cursor:pointer}
+.ms-seg button.on{background:#eef5f1;color:var(--green);border-color:var(--green)}
+.ms-custom{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 14px}
+.ms-f-act{grid-column:1/-1}
+.ms-add-model{display:flex;flex-wrap:wrap;gap:8px;align-items:end;min-width:0}
+.ms-add-model>.ms-f{flex:1 1 180px}
+.ms .ms-list{overflow:visible}
+.ms .ms-row-main{flex-basis:180px}
+.ms-acct-part{display:grid;gap:12px;min-width:0}
+.ms-acct-part h4{font-size:13px}
+@media(max-width:640px){
+  .ms-def,.ms-source{padding:14px}
+  .ms-source-panel,.ms-model-form{gap:12px}
+  .ms-sources button{padding:7px 9px}
+  .ms-custom{grid-template-columns:minmax(0,1fr)}
+  .ms-role{padding:12px}
+  .ms .ms-who{flex-wrap:wrap}
+  .ms .ob-key-body{padding:12px;min-width:0}
+  .ms .ob-key-form>input{flex-basis:100%}
+}

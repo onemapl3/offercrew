@@ -1,0 +1,291 @@
+{
+  "preset": "sales",
+  "label": "销售 / 商务（大客户销售、渠道、BD、销售支持、客户成功）",
+  "note": "渠道包：真人招聘帖从哪里读、默认开不开、按这个方向用什么词。V2EX、电鸭、阮一峰周刊、Hacker News 是技术社区，这个方向的招聘帖很少，默认关。要登录的来源默认关（要先在专用 Chrome 里登录，再到 config/human-source-policy.json 里打开）。kind 为 manual 的是搜好的入口：系统不去这些网站搜，只按你的细分和目标城市填好链接（lib/channel-entries.mjs），你自己打开看；BOSS 直聘的聊天消息另有一个开关，默认关着，打开后每小时只读看一眼聊天列表，没读的对话不点开。copy_keywords 为 true 的地址不能带搜索词，搜索词写在旁边给你复制；needs_international 为 true 的要能访问国际互联网。track_keywords 是各细分的搜索词，没选细分时用每个来源自己的 keywords。",
+  "track_keywords": {
+    "zh": {
+      "enterprise": [
+        "大客户销售",
+        "大客户经理",
+        "解决方案销售"
+      ],
+      "channel": [
+        "渠道销售",
+        "渠道经理"
+      ],
+      "bd": [
+        "商务拓展",
+        "BD",
+        "商务经理"
+      ],
+      "sales_support": [
+        "销售支持",
+        "商务专员",
+        "招投标"
+      ],
+      "customer_success": [
+        "客户成功",
+        "客户成功经理"
+      ]
+    },
+    "en": {
+      "enterprise": [
+        "Account Executive",
+        "Enterprise Sales"
+      ],
+      "channel": [
+        "Channel Sales",
+        "Partner Manager"
+      ],
+      "bd": [
+        "Business Development"
+      ],
+      "sales_support": [
+        "Sales Operations",
+        "Sales Support"
+      ],
+      "customer_success": [
+        "Customer Success"
+      ]
+    }
+  },
+  "sources": {
+    "v2ex": {
+      "name": "V2EX 酷工作",
+      "kind": "public",
+      "enabled": false,
+      "requires_login": false,
+      "keywords_use": "filter",
+      "keywords": [
+        "销售",
+        "大客户",
+        "渠道",
+        "商务拓展",
+        "BD",
+        "客户成功",
+        "account executive",
+        "business development",
+        "customer success"
+      ],
+      "why": "技术社区，这个方向的招聘帖很少。默认关。"
+    },
+    "eleduck": {
+      "name": "电鸭",
+      "kind": "public",
+      "enabled": false,
+      "requires_login": false,
+      "keywords_use": "filter",
+      "keywords": [
+        "销售",
+        "大客户",
+        "渠道",
+        "商务拓展",
+        "BD",
+        "客户成功",
+        "account executive",
+        "business development",
+        "customer success"
+      ],
+      "why": "技术社区，这个方向的招聘帖很少。默认关。"
+    },
+    "ruanyf": {
+      "name": "阮一峰周刊 · 谁在招人",
+      "kind": "public",
+      "enabled": false,
+      "requires_login": false,
+      "keywords_use": "filter",
+      "keywords": [
+        "销售",
+        "大客户",
+        "渠道",
+        "商务拓展",
+        "BD",
+        "客户成功",
+        "account executive",
+        "business development",
+        "customer success"
+      ],
+      "why": "技术社区，这个方向的招聘帖很少。默认关。"
+    },
+    "hn": {
+      "name": "Hacker News · Who is hiring",
+      "kind": "public",
+      "enabled": false,
+      "requires_login": false,
+      "keywords_use": "filter",
+      "keywords": [
+        "销售",
+        "大客户",
+        "渠道",
+        "商务拓展",
+        "BD",
+        "客户成功",
+        "account executive",
+        "business development",
+        "customer success"
+      ],
+      "why": "技术社区，这个方向的招聘帖很少。默认关。"
+    },
+    "boss": {
+      "name": "BOSS 直聘",
+      "kind": "manual",
+      "enabled": false,
+      "requires_login": true,
+      "automation": "none",
+      "keywords_use": "search",
+      "keywords": [
+        "大客户销售",
+        "渠道销售",
+        "商务拓展"
+      ],
+      "open_url": "https://www.zhipin.com/web/geek/jobs?query={keyword}&city={city}",
+      "why": "BOSS 直聘的用户协议禁止用自动化程序或外挂访问、操作平台。这里只放按方向搜好的入口（open_url），你自己打开、自己看、自己聊，系统不自动搜、不打招呼。聊天消息另有一个开关（设置 → 发现与匹配），默认关着，打开后每小时只读看一眼聊天列表，没读的对话不点开。默认关。"
+    },
+    "maimai": {
+      "name": "脉脉招聘帖",
+      "kind": "login",
+      "enabled": false,
+      "requires_login": true,
+      "keywords_use": "search",
+      "keywords": [
+        "招聘 大客户销售",
+        "招聘 BD",
+        "内推 商务"
+      ],
+      "why": "要登录：脉脉的招聘帖只有登录后才看得到，要先在专用 Chrome 里登录；默认关。脉脉消息同步暂不可用，请打开脉脉聊天手动查看和回复。"
+    },
+    "linkedin": {
+      "name": "LinkedIn 帖子",
+      "kind": "login",
+      "enabled": false,
+      "requires_login": true,
+      "keywords_use": "search",
+      "keywords": [
+        "招聘 BD",
+        "hiring account executive",
+        "hiring business development"
+      ],
+      "why": "要登录：LinkedIn 的 robots.txt 不许程序访问、条款禁止抓取，只能在你登录好的专用 Chrome 里看；默认关。"
+    },
+    "xiaohongshu": {
+      "name": "小红书招聘帖",
+      "kind": "login",
+      "enabled": false,
+      "requires_login": true,
+      "keywords_use": "search",
+      "keywords": [
+        "招聘 商务",
+        "内推 销售"
+      ],
+      "why": "要登录：小红书的内推帖要登录才能搜，要先在专用 Chrome 里登录；默认关。"
+    },
+    "liepin": {
+      "name": "猎聘",
+      "kind": "manual",
+      "enabled": true,
+      "requires_login": false,
+      "automation": "none",
+      "keywords_use": "search",
+      "keywords": [
+        "大客户销售",
+        "渠道销售",
+        "商务拓展",
+        "BD",
+        "销售支持",
+        "客户成功"
+      ],
+      "open_url": "https://www.liepin.com/zhaopin/?key={keyword}&dq={city}",
+      "why": "猎聘的 robots.txt 不许程序读带问号的地址（搜索页就是），用户协议正文没读到。这里只放搜好的入口，你自己打开看，系统不自动读。不用登录也能看职位详情。"
+    },
+    "zhaopin": {
+      "name": "智联招聘",
+      "kind": "manual",
+      "enabled": true,
+      "requires_login": false,
+      "automation": "none",
+      "keywords_use": "search",
+      "keywords": [
+        "大客户销售",
+        "渠道销售",
+        "商务拓展",
+        "BD",
+        "销售支持",
+        "客户成功"
+      ],
+      "open_url": "https://www.zhaopin.com/",
+      "copy_keywords": true,
+      "why": "搜索写法待核：先放首页，搜索词写在旁边，你复制过去搜。从本机打开时先出现一个勾选验证页。这里只放入口，系统不自动读。"
+    },
+    "51job": {
+      "name": "前程无忧",
+      "kind": "manual",
+      "enabled": true,
+      "requires_login": false,
+      "automation": "none",
+      "keywords_use": "search",
+      "keywords": [
+        "大客户销售",
+        "渠道销售",
+        "商务拓展",
+        "BD",
+        "销售支持",
+        "客户成功"
+      ],
+      "open_url": "https://we.51job.com/pc/search?keyword={keyword}&jobArea={city}",
+      "why": "前程无忧的用户协议和法律声明禁止用机器人、蜘蛛等程序抓取。这里只放搜好的入口，你自己打开看，系统不自动读。不用登录就能搜。"
+    },
+    "shixiseng": {
+      "name": "实习僧",
+      "kind": "manual",
+      "enabled": true,
+      "requires_login": false,
+      "automation": "none",
+      "keywords_use": "search",
+      "keywords": [
+        "大客户销售",
+        "渠道销售",
+        "商务拓展",
+        "BD",
+        "销售支持",
+        "客户成功"
+      ],
+      "open_url": "https://www.shixiseng.com/interns?keyword={keyword}&city={city}",
+      "why": "实习僧的用户协议禁止机器人、脚本自动访问和爬虫抓取。这里只放搜好的入口，你自己打开看，系统不自动读。不用登录就能看实习列表和详情。"
+    },
+    "iguopin": {
+      "name": "国聘",
+      "kind": "manual",
+      "enabled": true,
+      "requires_login": false,
+      "automation": "none",
+      "keywords_use": "search",
+      "keywords": [
+        "大客户销售",
+        "渠道销售",
+        "商务拓展",
+        "BD",
+        "销售支持",
+        "客户成功"
+      ],
+      "open_url": "https://www.iguopin.com/job/list?keyword={keyword}&district={city}",
+      "why": "国聘的职位接口要前端算签名，用户协议正文没读到。这里只放搜好的入口，你自己打开看，系统不自动读。关键词和城市一起生效（2026-10-03 打开结果页核过）；城市按对照表填，表里没有的城市不带。"
+    },
+    "linkedin_jobs": {
+      "name": "LinkedIn 职位搜索",
+      "kind": "manual",
+      "enabled": true,
+      "requires_login": false,
+      "automation": "none",
+      "keywords_use": "search",
+      "keywords": [
+        "Account Executive",
+        "Business Development",
+        "Customer Success"
+      ],
+      "open_url": "https://www.linkedin.com/jobs/search?keywords={keyword}&geoId={city}",
+      "lang": "en",
+      "needs_international": true,
+      "why": "LinkedIn 的用户协议禁止抓取和用机器人访问。这里只放搜好的职位搜索链接，你自己打开看，系统不自动读。需要能访问国际互联网：从中国大陆网络直接打开会被拒绝。不用登录也能看职位。"
+    }
+  }
+}

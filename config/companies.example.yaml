@@ -1,0 +1,258 @@
+# 目标公司清单的示例（模板）。你自己的清单是本机文件 config/companies.yaml（不进仓库）：
+# 没有它时系统读这份示例；bin/discover.mjs、bin/verify-sources.mjs 第一次回写就会建出本机文件。
+# 每种适配器（lib/ats/*.mjs 的 ats_type）保留一家知名公司作为示例，字段与适配器一一对应；照同样结构增删。
+# status / job_count / verified_at 等字段由 `node bin/discover.mjs --retry-unverified` 与 `node bin/verify-sources.mjs` 回写；
+# 加 `paused: <原因>` 可暂停某个来源。
+- name: Airwallex
+  hq: 待核
+  cn_offices:
+  - Shanghai
+  ats_type: ashby
+  board: airwallex
+  careers_url: https://jobs.ashbyhq.com/airwallex
+  status: verified
+  careers_http_status: 200
+  why: 示例：ashby 适配器（lib/ats/ashby.mjs）的写法
+- name: NVIDIA
+  hq: 待核
+  cn_offices: []
+  ats_type: workday
+  board: nvidia
+  origin: https://nvidia.wd5.myworkdayjobs.com
+  tenant: nvidia
+  site: NVIDIAExternalCareerSite
+  careers_url: https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite
+  status: verified
+  query: China
+  careers_http_status: 200
+  # 大公司按地点筛（可选）：Workday 报的 total 最多 2000，读到就停。Id 取同一个接口返回的 facets 里地点 / 国家的值
+  # applied_facets:
+  #   locationCountry: [<国家 Id>]
+  #   locations: [<地点 Id>, <地点 Id>]
+  # 接之前先核 robots.txt 放不放行这个站：node bin/robots-check.mjs <职位站地址>
+  why: 示例：workday 适配器（lib/ats/workday.mjs）的写法
+- name: Grab
+  board: Grab
+  ats_type: smartrecruiters
+  careers_url: https://careers.smartrecruiters.com/Grab
+  careers_http_status: 200
+  status: verified
+  why: 示例：smartrecruiters 适配器（lib/ats/smartrecruiters.mjs）的写法
+- name: PingCAP
+  cn_offices:
+  - Hangzhou
+  ats_type: greenhouse
+  board: pingcap
+  careers_url: https://job-boards.greenhouse.io/pingcap
+  cities:
+  - 杭州
+  - Hangzhou
+  status: verified
+  why: 示例：greenhouse 适配器（lib/ats/greenhouse.mjs）的写法
+- name: Zilliz
+  cn_offices:
+  - Hangzhou
+  ats_type: lever
+  board: zilliz
+  careers_url: https://zilliz.com/careers
+  cities:
+  - 杭州
+  - Hangzhou
+  status: verified
+  why: 示例：lever 适配器（lib/ats/lever.mjs）的写法
+- name: 字节跳动
+  hq: 北京
+  cn_offices:
+  - Hangzhou
+  - Shanghai
+  ats_type: larkhire
+  board: bytedance
+  origin: https://jobs.bytedance.com
+  position_path: /experienced/position
+  location_codes:
+  - CT_52
+  max_pages: 2
+  careers_url: https://jobs.bytedance.com/experienced/position
+  status: verified
+  careers_http_status: 200
+  cities:
+  - 杭州
+  - Hangzhou
+  # 校招站（可选，没写就读社招门户）：
+  # website_path: campus      # 页面配置里站点的 path
+  # portal_type: 1            # 校招门户是 1，社招门户是 2
+  # position_path: /campus/position
+  why: 示例：larkhire 适配器（lib/ats/larkhire.mjs）的写法
+- name: 网易
+  hq: 杭州
+  cn_offices:
+  - Hangzhou
+  - Shanghai
+  ats_type: netease
+  board: netease
+  origin: https://hr.163.com
+  careers_url: https://hr.163.com/job-list.html
+  status: verified
+  careers_http_status: 200
+  why: 示例：netease 适配器（lib/ats/netease.mjs）的写法
+- name: 腾讯
+  hq: 深圳
+  cn_offices:
+  - Shanghai
+  - Hangzhou
+  ats_type: tencent
+  board: tencent
+  origin: https://careers.tencent.com
+  careers_url: https://careers.tencent.com/search.html
+  status: verified
+  careers_http_status: 200
+  why: 示例：tencent 适配器（lib/ats/tencent.mjs）的写法
+- name: 涂鸦智能
+  cn_offices:
+  - Hangzhou
+  ats_type: moka
+  board: tuya
+  org_id: tuya
+  site_id: 3236
+  site_path: apply
+  careers_url: https://app.mokahr.com/apply/tuya/3236
+  cities:
+  - 杭州
+  - Hangzhou
+  status: verified
+  careers_http_status: 200
+  # unlisted_city: keep         # 可选：没写城市的岗位也留下，地点记「未标注」交给判断（管培生常不写城市）
+  # campus_site_id: [76195, 78342]  # 可选：校招站的站点号，好几个站就写成列表，几个站一起读、重复的只留一条
+  # org_id 写网址里那一段即可：接口要的是另一个时（网址 nestlegcr、接口要 nestlezgc），适配器从页面 init-data 取
+  why: 示例：moka 适配器（lib/ats/moka.mjs）的写法
+- name: 阿里巴巴集团
+  hq: 杭州
+  cn_offices:
+  - Hangzhou
+  - Shanghai
+  ats_type: alitalent
+  board: alibaba
+  origin: https://talent.alibaba.com
+  detail_origin: https://talent-holding.alibaba.com
+  regions: 330100,310100
+  sub_categories: 136,409,702,410,704,408
+  queries:
+  - ''
+  max_pages: 30
+  careers_url: https://talent-holding.alibaba.com/off-campus/position-list?lang=zh
+  status: verified
+  careers_http_status: 200
+  why: 示例：alitalent 适配器（lib/ats/alitalent.mjs）的写法
+- name: 海康威视
+  cn_offices:
+  - Hangzhou
+  ats_type: publiccareers
+  careers_url: https://talent.hikvision.com/
+  cities:
+  - 杭州
+  - Hangzhou
+  status: verified
+  why: 示例：publiccareers 适配器（lib/ats/publiccareers.mjs）的写法
+- name: 大华
+  cn_offices:
+  - Hangzhou
+  ats_type: beisen
+  board: dahua
+  origin: https://dahua.zhiye.com
+  portal_id: 455a866e-2e06-4ff1-8c1f-8dd03749a267
+  careers_url: https://dahua.zhiye.com/social/jobs
+  cities:
+  - 杭州
+  - Hangzhou
+  status: verified
+  careers_http_status: 200
+  # unlisted_city: keep         # 可选：没写城市的岗位也留下，地点记「未标注」
+  # 大租户的筛选（可选，没写就整类翻完）：
+  # classification_one: ['3']   # 北森门户筛选栏第一组的编号（官网分类链接里 ?1=[{"id":"3",…}]）
+  # keywords: [财务, 审计]       # 北森的关键词搜索，每个词各读一遍
+  # exclude_titles: [咖啡师]     # 标题里带这些词的在本地去掉
+  why: 示例：beisen 适配器（lib/ats/beisen.mjs）的写法
+- name: 每日互动
+  cn_offices:
+  - Hangzhou
+  ats_type: getui
+  origin: https://job.getui.com
+  careers_url: https://job.getui.com/society/position
+  cities:
+  - 杭州
+  - Hangzhou
+  status: verified
+  careers_http_status: 200
+  why: 示例：getui 适配器（lib/ats/getui.mjs）的写法
+- name: Microsoft
+  hq: Redmond
+  cn_offices:
+  - Suzhou
+  - Shanghai
+  - Beijing
+  ats_type: microsoft
+  origin: https://apply.careers.microsoft.com
+  careers_url: https://apply.careers.microsoft.com/careers
+  searches:
+  - query: software engineer
+    location: suzhou
+  - query: software engineer
+    location: shanghai
+  - query: software engineer
+    location: hangzhou
+  cities:
+  - 苏州
+  - Suzhou
+  - 上海
+  - Shanghai
+  - 杭州
+  - Hangzhou
+  max_per_search: 50
+  status: verified
+  why: 示例：microsoft 适配器（lib/ats/microsoft.mjs）的写法
+  # 示例默认暂停：这个适配器（lib/ats/microsoft.mjs）要驱动已登录的专用 Chrome；要用时删掉下面 paused 这一行。
+  # paused 的文字会原样显示在 Radar 的招聘源列表上（「暂停了：…」），所以写给用户看的话（10-02 开箱第 2 轮 N08）。
+  paused: 要先在浏览器里登录微软招聘网站
+# oracle 适配器（lib/ats/oracle.mjs）和 oleeo 适配器（lib/ats/oleeo.mjs）的写法，默认注释掉：没有本机清单时这份文件会被直接读，
+# 新用户不该默认去读美国的金融机构。要用时去掉行首的「# 」；金融公司包 config/company-packs/finance.example.yaml 里有现成的条目。
+# - name: JPMorgan Chase
+#   hq: New York
+#   ats_type: oracle
+#   origin: https://jpmc.fa.oraclecloud.com
+#   site_number: CX_1001    # 页面源码里的 siteNumber=CX_…，不是网址里的站点名；不像 CX_… 时适配器直接报错
+#   facets:
+#     locations:
+#     - '300000000289738'   # United States（地点 facet 的 Id）
+#     titles:
+#     - PAA                 # Program Analysts & Associate：给应届生和早期职业的项目岗
+#   careers_url: https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/jobs
+#   status: verified
+#   careers_http_status: 200
+#   why: 示例：oracle 适配器（lib/ats/oracle.mjs）的写法
+# - name: Bank of America
+#   hq: Charlotte
+#   ats_type: oleeo
+#   origin: https://bankcampuscareers.tal.net
+#   vacancy: 1              # 岗位板编号：网址里 candidate/jobboard/vacancy/<n>（Global Programs）
+#   recruit_types:          # 这块板只有校招和实习；不写就按你的阶段读（lib/ats/recruit.mjs）
+#   - campus
+#   - intern
+#   careers_url: https://bankcampuscareers.tal.net/vx/mobile-0/candidate/jobboard/vacancy/1
+#   status: verified
+#   careers_http_status: 200
+#   # unlisted_city: keep       # 可选：订阅源没有城市栏、标题也不写城市时记「未标注」，不在预筛挡掉
+#   why: 示例：oleeo 适配器（lib/ats/oleeo.mjs）的写法
+# hotjob 适配器（lib/ats/hotjob.mjs，大易新版门户）的写法，默认注释掉；要用时去掉行首的「# 」：
+# - name: 德勤中国
+#   ats_type: hotjob
+#   origin: https://ehjobs.deloitte.com.cn          # 社招门户所在的域名
+#   portal_id: SU649e304a6a9f0ef690533e9a           # 门户地址里 /SU…/pb/ 那一段
+#   campus_origin: https://wecruit.hotjob.cn        # 可选：校招和实习在另一个门户时写它
+#   campus_portal_id: SU64365a780dcad43c5ae82bab
+#   careers_url: https://ehjobs.deloitte.com.cn/SU649e304a6a9f0ef690533e9a/pb/social.html
+#   # recruit_types: [campus, intern]               # 可选：不写就按你的阶段读（lib/ats/recruit.mjs）
+#   # work_place_codes: ['0/4/7/9']                 # 可选：大门户让服务器先按城市筛（门户上选好城市后地址里的 workPlaceCode）
+#   # unlisted_city: keep                           # 可选：没写城市、写「全部地区」的岗位也留下，地点记「未标注」
+#   # max_pages: 30                                 # 可选：每类最多翻几页，默认 30（每页几条由服务器定）
+#   why: 示例：hotjob 适配器（lib/ats/hotjob.mjs）的写法；只写 <公司>.hotjob.cn 的 origin 时，门户编号由 getSLD 换出；
+#     网址是 /wt/<代码>/web/… 的大易老版读不了（hotjob_legacy_unsupported）

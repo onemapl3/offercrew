@@ -1,0 +1,610 @@
+# 金融公司包（起步清单）：国内券商、基金、银行、保险，外资投行和银行、精品投行、买方。给「金融」方向用。
+#
+# 这是起步清单，不会自动被扫描：把你想要的那几段复制到 config/companies.yaml（你自己的公司清单，本机文件），
+# 下一轮 node bin/discover.mjs 才会去读。写法和 config/companies.yaml 完全一样，多出来的三项：
+#   group    分组：cn_broker 券商 · cn_fund 基金 · cn_bank 银行 · cn_insurance 保险 · global_bank 外资投行和银行
+#            · boutique 精品投行 · buy_side 买方
+#   presets  这家公司招哪些方向的人：finance 金融
+#   why      为什么在包里、核对时读到了什么
+#
+# 每一家都在 2026-10-02 用现有适配器只读核过（沙盒、演示数据，先看 robots.txt 放行再读；Workday 用
+# node bin/robots-check.mjs 按站点核）。数字的口径：
+#   国内门户（北森、Moka、大易、飞书）社招、校招、实习三类都读，只数落在北京、上海、深圳、广州、杭州、香港六个城市里的；
+#   外资（Workday、Oracle、Greenhouse、Oleeo）数的是这个站点的全部，括号里是纽约、香港、中国大陆的。
+# 平时扫描按你的阶段和城市来：在读的读实习和校招，应届的读校招和社招，有经验的只读社招，数目会不一样。
+# 目标城市是香港、上海的人，外资能读到的不多，主力是国内机构；目标在纽约的，外资这块基本够用。
+# 一家公司的社招、校招在两个站上的，分成两条（名字后面写「（校招）」）。
+# 读不到、或者还没有适配器的机构列在文件最后，不在包里。
+
+# ── 券商 ─────────────────────────────────────────────────────────────────
+- name: 中金公司
+  hq: 北京
+  group: cn_broker
+  ats_type: beisen
+  origin: https://cicc.zhiye.com
+  portal_id: 8e5a323a-a6e8-4a37-9ff2-018191167d45
+  careers_url: https://cicc.zhiye.com/social/jobs
+  presets: [finance]
+  why: 头部投行；北森（官网有挑战页，招聘门户没有）。2026-10-02 读到社招 196、校招 98、实习 152（香港 103）
+- name: 中信建投
+  hq: 北京
+  group: cn_broker
+  ats_type: beisen
+  origin: https://csc108.zhiye.com
+  portal_id: f1f86fea-3b92-4111-b411-f3992e681f6b
+  careers_url: https://csc108.zhiye.com/social/jobs
+  presets: [finance]
+  why: 头部券商；北森。2026-10-02 读到社招 65、校招 28
+- name: 国信证券
+  hq: 深圳
+  group: cn_broker
+  ats_type: beisen
+  origin: https://guosen.zhiye.com
+  portal_id: 3963cb99-c4b3-44c5-9c10-41dd2e28febb
+  careers_url: https://guosen.zhiye.com/social/jobs
+  presets: [finance]
+  why: 头部券商；北森。2026-10-02 读到社招 33、校招 37、实习 26
+- name: 中国银河
+  hq: 北京
+  group: cn_broker
+  ats_type: beisen
+  origin: https://chinastock.zhiye.com
+  portal_id: 2de9fc66-f050-4aef-8bf0-68d092fcdc8e
+  careers_url: https://chinastock.zhiye.com/social/jobs
+  presets: [finance]
+  why: 头部券商；北森。2026-10-02 读到社招 40、校招 67（香港 15）
+- name: 光大证券
+  hq: 上海
+  group: cn_broker
+  ats_type: beisen
+  origin: https://ebscn.zhiye.com
+  portal_id: 8d1ee921-021a-4121-ac00-09ed5a87d9f7
+  careers_url: https://ebscn.zhiye.com/social/jobs
+  presets: [finance]
+  why: 券商；北森。2026-10-02 读到社招 87，校招栏目当天是空的
+- name: 招商证券
+  hq: 深圳
+  group: cn_broker
+  ats_type: hotjob
+  origin: https://wecruit.hotjob.cn
+  portal_id: SU629dbc0c0dcad452299bc0f7
+  careers_url: https://wecruit.hotjob.cn/SU629dbc0c0dcad452299bc0f7/pb/index.html
+  presets: [finance]
+  why: 头部券商；大易（hotjob）。2026-10-02 读到社招 143、校招 22、实习 43
+- name: 广发证券
+  hq: 广州
+  group: cn_broker
+  ats_type: hotjob
+  origin: https://wecruit.hotjob.cn
+  portal_id: SU625527c30dcad4021443cdda
+  careers_url: https://wecruit.hotjob.cn/SU625527c30dcad4021443cdda/pb/index.html
+  presets: [finance]
+  why: 头部券商；官网 job.gf.com.cn 是门面，岗位在大易（hotjob）。每页条数由服务器定，当天三类一共翻了 27 页，没到默认的 30 页上限。2026-10-02 读到社招 149、校招 7、实习 38
+- name: 华泰证券
+  hq: 南京
+  group: cn_broker
+  ats_type: hotjob
+  origin: https://wecruit.hotjob.cn
+  portal_id: SU6013d14e5d83dc11e4a8ae4d
+  careers_url: https://wecruit.hotjob.cn/SU6013d14e5d83dc11e4a8ae4d/pb/index.html
+  presets: [finance]
+  why: 头部券商；大易（hotjob）。招聘页地址用 wecruit 的，job.htsc.com.cn 的证书和域名对不上。2026-10-02 读到社招 105、校招 71、实习 36
+- name: 兴业证券
+  hq: 福州
+  group: cn_broker
+  ats_type: hotjob
+  origin: https://wecruit.hotjob.cn
+  portal_id: SU68fb2499b7da1347a9dd852c
+  careers_url: https://wecruit.hotjob.cn/SU68fb2499b7da1347a9dd852c/pb/index.html
+  presets: [finance]
+  why: 券商；大易（hotjob）。2026-10-02 读到社招 21、校招 36、实习 13
+- name: 东方证券
+  hq: 上海
+  group: cn_broker
+  ats_type: moka
+  org_id: dfzq
+  site_id: 4927
+  site_path: apply
+  campus_site_id: [4928, 5546]
+  careers_url: https://app.mokahr.com/apply/dfzq/4927
+  presets: [finance]
+  why: 券商；Moka，社招站、校招站、实习站各一个。2026-10-02 社招站是空的，读到校招 6、实习 5
+- name: 东方财富
+  hq: 上海
+  group: cn_broker
+  ats_type: moka
+  org_id: eastmoney
+  site_id: 57970
+  site_path: social-recruitment
+  campus_site_id: [92400, 57971]
+  careers_url: https://app.mokahr.com/social-recruitment/eastmoney/57970
+  presets: [finance]
+  why: 东方财富集团的招聘站，东方财富证券的岗位在里面（没有单独的证券公司站）；Moka。2026-10-02 读到社招 142、校招 81、实习 11
+
+# ── 基金 ─────────────────────────────────────────────────────────────────
+- name: 招商基金
+  hq: 深圳
+  group: cn_fund
+  ats_type: beisen
+  origin: https://cmfchina.zhiye.com
+  portal_id: d2248c15-826a-4255-abf6-434961ed0b93
+  careers_url: https://cmfchina.zhiye.com/social/jobs
+  presets: [finance]
+  why: 公募基金；北森。2026-10-02 读到社招 26、校招 11、实习 1
+- name: 嘉实基金
+  hq: 北京
+  group: cn_fund
+  ats_type: moka
+  org_id: jsfund
+  site_id: 44123
+  site_path: social-recruitment
+  campus_site_id: [43906, 44330]
+  careers_url: https://app.mokahr.com/social-recruitment/jsfund/44123
+  presets: [finance]
+  why: 公募基金；Moka 社招站加校招站、实习站。2026-10-02 读到社招 18、校招 22、实习 4
+- name: 天弘基金
+  hq: 天津
+  group: cn_fund
+  ats_type: moka
+  org_id: thfund
+  site_id: 46218
+  site_path: social-recruitment
+  campus_site_id: [46219]
+  careers_url: https://app.mokahr.com/social-recruitment/thfund/46218
+  presets: [finance]
+  why: 公募基金；Moka 社招站加校招站。2026-10-02 读到社招 33、校招 8
+- name: 富国基金
+  hq: 上海
+  group: cn_fund
+  ats_type: moka
+  org_id: fullgoal
+  site_id: 72198
+  site_path: campus-recruitment
+  careers_url: https://app.mokahr.com/campus-recruitment/fullgoal/72198
+  presets: [finance]
+  why: 公募基金；只找到一个 Moka 校招站（金融科技），社招和投研校招走哪里没找到。2026-10-02 读到校招 3、实习 3，都是技术岗
+- name: 南方基金
+  hq: 深圳
+  group: cn_fund
+  ats_type: hotjob
+  origin: https://wecruit.hotjob.cn
+  portal_id: SU6138665dbef57c3b63841399
+  careers_url: https://wecruit.hotjob.cn/SU6138665dbef57c3b63841399/pb/index.html
+  presets: [finance]
+  why: 公募基金；大易（hotjob）。2026-10-02 读到社招 24、校招 20
+- name: 博时基金
+  hq: 深圳
+  group: cn_fund
+  ats_type: hotjob
+  origin: https://bosera.hotjob.cn
+  portal_id: SU65f940241c240e0a2275bda8
+  careers_url: https://bosera.hotjob.cn/SU65f940241c240e0a2275bda8/pb/index.html
+  presets: [finance]
+  why: 公募基金；大易（hotjob，自己的二级域名），校招里有博时国际（香港）的岗位。2026-10-02 读到社招 22、校招 22、实习 4
+
+# ── 银行 ─────────────────────────────────────────────────────────────────
+- name: 北京银行
+  hq: 北京
+  group: cn_bank
+  ats_type: beisen
+  origin: https://bankofbeijing.zhiye.com
+  portal_id: 8aa3fdcc-9ab7-429e-8c17-394565958efb
+  careers_url: https://bankofbeijing.zhiye.com/social/jobs
+  presets: [finance]
+  why: 城商行；北森。2026-10-02 读到社招 22、校招 12
+- name: 上海银行
+  hq: 上海
+  group: cn_bank
+  ats_type: beisen
+  origin: https://bosc.zhiye.com
+  portal_id: 04dd30cc-229d-43ed-a3fd-7b94c9f2543f
+  careers_url: https://bosc.zhiye.com/social/jobs
+  presets: [finance]
+  why: 城商行；北森。2026-10-02 读到社招 181、校招 38
+- name: 华夏银行
+  hq: 北京
+  group: cn_bank
+  ats_type: hotjob
+  origin: https://hxb.hotjob.cn
+  portal_id: SU645b0d18bef57c0907e9fbc8
+  max_pages: 60
+  careers_url: https://hxb.hotjob.cn/SU645b0d18bef57c0907e9fbc8/pb/index.html
+  presets: [finance]
+  why: 股份行；大易（hotjob）。校招有 58 页，超过默认的 30 页，所以写明 max_pages 60（一轮多翻三十来页）。2026-10-02 读到社招 42、校招 130
+- name: 广州银行
+  hq: 广州
+  group: cn_bank
+  ats_type: hotjob
+  origin: https://gzcb.hotjob.cn
+  portal_id: SU64fed9286202cc4693ebd5df
+  careers_url: https://gzcb.hotjob.cn/SU64fed9286202cc4693ebd5df/pb/index.html
+  presets: [finance]
+  why: 城商行；大易（hotjob）。2026-10-02 读到社招 54、校招 11、实习 1（广州 60）
+- name: 郑州银行
+  hq: 郑州
+  group: cn_bank
+  ats_type: hotjob
+  origin: https://zzbank.hotjob.cn
+  portal_id: SU64f952b41eb8051fabaed066
+  careers_url: https://zzbank.hotjob.cn/SU64f952b41eb8051fabaed066/pb/index.html
+  presets: [finance]
+  why: 城商行，岗位都在郑州（目标城市里没有郑州就读不到）；大易（hotjob）。2026-10-02 在郑州读到社招 36
+
+# ── 保险 ─────────────────────────────────────────────────────────────────
+- name: 中国人寿
+  hq: 北京
+  group: cn_insurance
+  ats_type: beisen
+  origin: https://chinalife.zhiye.com
+  portal_id: fe9a4897-6c7b-4ebd-904b-da4f88b13020
+  careers_url: https://chinalife.zhiye.com/social/jobs
+  presets: [finance]
+  why: 保险集团，实习里有广发银行分行的岗位；北森。每类最多翻 12 页（360 条），校招一千多条翻不完。2026-10-02 读到社招 128、校招 48、实习 6
+- name: 泰康
+  hq: 北京
+  group: cn_insurance
+  ats_type: beisen
+  origin: https://jobtaikang.zhiye.com
+  portal_id: 9f148551-4e1b-42c3-bb17-f09ad9f30453
+  careers_url: https://jobtaikang.zhiye.com/social/jobs
+  presets: [finance]
+  why: 保险集团，岗位里有不少养老社区、口腔医生岗，判断时按标题筛；北森。2026-10-02 读到社招 155、校招 158、实习 71
+- name: 中国人保
+  hq: 北京
+  group: cn_insurance
+  ats_type: beisen
+  origin: https://picc.zhiye.com
+  portal_id: 20e42367-7ff6-422b-8dd9-92f72842818a
+  careers_url: https://picc.zhiye.com/social/jobs
+  presets: [finance]
+  why: 保险集团，岗位名前面带子公司；北森。每类最多翻 12 页，校招两千条翻不完。2026-10-02 读到社招 74、校招 46、实习 27
+
+# ── 外资投行和银行 ─────────────────────────────────────────────────────────
+- name: 摩根大通
+  hq: New York
+  group: global_bank
+  ats_type: oracle
+  origin: https://jpmc.fa.oraclecloud.com
+  site_number: CX_1001
+  facets:
+    locations: ['300000000289330', '300000000289192', '300000020694566']   # 香港、中国、纽约
+  page_size: 100
+  max_pages: 15
+  careers_url: https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/jobs
+  presets: [finance]
+  why: 全球投行，校招和社招在同一个站上；Oracle，只读香港、中国、纽约三个地点。2026-10-02 读到 1082 个（纽约 925、香港 113、中国大陆 44）
+- name: 高盛
+  hq: New York
+  group: global_bank
+  ats_type: oracle
+  origin: https://hdpc.fa.us2.oraclecloud.com
+  site_number: CX_3002
+  facets:
+    locations: ['300000000228756', '300000000228618', '300000645090417']   # 香港、中国、纽约
+  careers_url: https://hdpc.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/LateralHiring/jobs
+  presets: [finance]
+  why: 全球投行，只有社招；higher.gs.com 的 robots 不让读列表页，负责人 10-02 定了读背后 Oracle 主机的公开接口（站点编号 CX_3002，主机上没有 robots.txt）。2026-10-02 读到 213 个（纽约 160、香港 43、中国大陆 10）
+- name: 美国银行
+  hq: Charlotte
+  group: global_bank
+  ats_type: workday
+  origin: https://ghr.wd1.myworkdayjobs.com
+  tenant: ghr
+  site: lateral-apac
+  careers_url: https://ghr.wd1.myworkdayjobs.com/lateral-apac
+  presets: [finance]
+  why: 全球投行；Workday 亚太社招站（美国的站近两千个岗位，没加地点筛选前先不收，见文件末尾）。2026-10-02 读到 106 个（香港 10、上海 1）
+- name: 美国银行（校招）
+  hq: Charlotte
+  group: global_bank
+  ats_type: oleeo
+  origin: https://bankcampuscareers.tal.net
+  vacancy: 1
+  careers_url: https://bankcampuscareers.tal.net/vx/lang-en-GB/mobile-0/brand-4/candidate/jobboard/vacancy/1/adv/
+  presets: [finance]
+  why: 美国银行全球校招项目；Oleeo 订阅源，带城市栏目，robots 要求每次隔 10 秒，一轮只读一次。2026-10-02 在香港、上海、纽约等城市读到 109 个
+- name: 巴克莱
+  hq: London
+  group: global_bank
+  ats_type: workday
+  origin: https://barclays.wd3.myworkdayjobs.com
+  tenant: barclays
+  site: External_Career_Site_Barclays
+  careers_url: https://barclays.wd3.myworkdayjobs.com/External_Career_Site_Barclays
+  presets: [finance]
+  why: 英国投行；已经从 Taleo 换到 Workday，校招和社招同站。2026-10-02 读到 765 个（纽约 49、香港 13）
+- name: 德意志银行
+  hq: Frankfurt
+  group: global_bank
+  ats_type: workday
+  origin: https://db.wd3.myworkdayjobs.com
+  tenant: db
+  site: DBWebsite
+  careers_url: https://db.wd3.myworkdayjobs.com/DBWebsite
+  presets: [finance]
+  why: 德国投行；Workday 站点 DBWebsite，robots 放行（官网自己的搜索用的是另一套系统）。2026-10-02 读到 1168 个（纽约 94、香港 15、上海 6、北京 1）
+
+# ── 精品投行 ──────────────────────────────────────────────────────────────
+- name: Evercore
+  hq: New York
+  group: boutique
+  ats_type: oleeo
+  origin: https://evercore.tal.net
+  vacancy: 3
+  unlisted_city: keep
+  board_type: social
+  careers_url: https://evercore.tal.net/vx/mobile-0/candidate/jobboard/vacancy/3/adv/
+  presets: [finance]
+  why: 精品投行，社招板；Oleeo 订阅源没有城市栏目，标题末尾多是部门名，所以没写城市的也留下（unlisted_city），交给判断读 JD。2026-10-02 读到 54 个
+- name: Evercore（校招）
+  hq: New York
+  group: boutique
+  ats_type: oleeo
+  origin: https://evercore.tal.net
+  vacancy: 2
+  unlisted_city: keep
+  careers_url: https://evercore.tal.net/vx/mobile-0/candidate/jobboard/vacancy/2/adv/
+  presets: [finance]
+  why: Evercore 的学生项目板（1 号板是活动，不读）；同样没有城市栏目。2026-10-02 读到实习 33、校招 3
+- name: Lazard
+  hq: New York
+  group: boutique
+  ats_type: oracle
+  origin: https://icbpjb.fa.ocs.oraclecloud.com
+  site_number: CX_1
+  careers_url: https://icbpjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/LazardProfessionalCareers/jobs
+  presets: [finance]
+  why: 精品投行；已经从 Oleeo 换到 Oracle，社招站 CX_1。2026-10-02 读到 48 个（纽约 27），大中华区没有
+- name: Lazard（校招）
+  hq: New York
+  group: boutique
+  ats_type: oracle
+  origin: https://icbpjb.fa.ocs.oraclecloud.com
+  site_number: CX_2
+  careers_url: https://icbpjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/LazardStudentCareers/jobs
+  presets: [finance]
+  why: Lazard 的学生站 CX_2。2026-10-02 读到 75 个（纽约 9）
+- name: Rothschild & Co
+  hq: London
+  group: boutique
+  ats_type: workday
+  origin: https://rothschildandco.wd3.myworkdayjobs.com
+  tenant: rothschildandco
+  site: Rothschildandco_Lateral
+  careers_url: https://rothschildandco.wd3.myworkdayjobs.com/Rothschildandco_Lateral
+  presets: [finance]
+  why: 精品投行，社招站；Workday。2026-10-02 读到 119 个（纽约 10）
+- name: Rothschild & Co（校招）
+  hq: London
+  group: boutique
+  ats_type: oleeo
+  origin: https://rothschildandco.tal.net
+  vacancy: 2
+  careers_url: https://rothschildandco.tal.net/vx/mobile-0/candidate/jobboard/vacancy/2/adv/
+  presets: [finance]
+  why: Rothschild & Co 的学生项目板（Oleeo，1 号板是活动）；详情页有时是挑战页，碰到就只有标题。2026-10-02 读到实习 26、校招 2（香港 1）
+- name: Houlihan Lokey
+  hq: Los Angeles
+  group: boutique
+  ats_type: workday
+  origin: https://hl.wd1.myworkdayjobs.com
+  tenant: hl
+  site: Lateral
+  careers_url: https://hl.wd1.myworkdayjobs.com/Lateral
+  presets: [finance]
+  why: 精品投行，社招站；Workday（robots 放行 Lateral、Campus，禁 External）。2026-10-02 读到 90 个（纽约 10、香港 2、上海 2）
+- name: Houlihan Lokey（校招）
+  hq: Los Angeles
+  group: boutique
+  ats_type: workday
+  origin: https://hl.wd1.myworkdayjobs.com
+  tenant: hl
+  site: Campus
+  careers_url: https://hl.wd1.myworkdayjobs.com/Campus
+  presets: [finance]
+  why: Houlihan Lokey 的校招站。2026-10-02 读到 28 个（香港 3、纽约 2、上海 1）
+- name: PJT Partners
+  hq: New York
+  group: boutique
+  ats_type: workday
+  origin: https://pjtpartners.wd1.myworkdayjobs.com
+  tenant: pjtpartners
+  site: Careers
+  careers_url: https://pjtpartners.wd1.myworkdayjobs.com/Careers
+  presets: [finance]
+  why: 精品投行，社招站；Workday。2026-10-02 读到 51 个（纽约 31、香港 2）
+- name: PJT Partners（校招）
+  hq: New York
+  group: boutique
+  ats_type: workday
+  origin: https://pjtpartners.wd1.myworkdayjobs.com
+  tenant: pjtpartners
+  site: Students
+  careers_url: https://pjtpartners.wd1.myworkdayjobs.com/Students
+  presets: [finance]
+  why: PJT Partners 的学生站。2026-10-02 读到 16 个（纽约 3、香港 2）
+- name: Moelis
+  hq: New York
+  group: boutique
+  ats_type: workday
+  origin: https://moelis.wd1.myworkdayjobs.com
+  tenant: moelis
+  site: Experienced-Hires
+  careers_url: https://moelis.wd1.myworkdayjobs.com/Experienced-Hires
+  presets: [finance]
+  why: 精品投行，社招站；Workday。2026-10-02 读到 34 个（纽约 22）
+- name: Moelis（校招）
+  hq: New York
+  group: boutique
+  ats_type: oleeo
+  origin: https://moelis-careers.tal.net
+  vacancy: 2
+  unlisted_city: keep
+  careers_url: https://moelis-careers.tal.net/vx/mobile-0/candidate/jobboard/vacancy/2/adv/
+  presets: [finance]
+  why: Moelis 的学生项目板（Oleeo，没有城市栏目，没写城市的留下交给判断）。2026-10-02 读到实习 11、校招 7
+- name: Perella Weinberg
+  hq: New York
+  group: boutique
+  ats_type: workday
+  origin: https://wd1.myworkdaysite.com
+  tenant: pwp
+  site: PWP_Experienced_Opportunities
+  careers_url: https://wd1.myworkdaysite.com/recruiting/pwp/PWP_Experienced_Opportunities
+  presets: [finance]
+  why: 精品投行，社招站；Workday（myworkdaysite 域名，主机上没有 robots.txt）。读数据正常，岗位链接是适配器拼的 myworkdayjobs 写法，可能打不开，打不开就从招聘页进。2026-10-02 读到 5 个（纽约 4）
+- name: Perella Weinberg（校招）
+  hq: New York
+  group: boutique
+  ats_type: oleeo
+  origin: https://pwpcareers.tal.net
+  vacancy: 2
+  unlisted_city: keep
+  careers_url: https://pwpcareers.tal.net/vx/mobile-0/candidate/jobboard/vacancy/2/adv/
+  presets: [finance]
+  why: Perella Weinberg 的学生项目板（Oleeo；标题里纽约写成 NY，按城市名认不出，没写城市的留下交给判断）。2026-10-02 读到实习 7
+
+# ── 买方 ─────────────────────────────────────────────────────────────────
+- name: BlackRock
+  hq: New York
+  group: buy_side
+  ats_type: workday
+  origin: https://blackrock.wd1.myworkdayjobs.com
+  tenant: blackrock
+  site: BlackRock_Professional
+  careers_url: https://blackrock.wd1.myworkdayjobs.com/BlackRock_Professional
+  presets: [finance]
+  why: 全球最大资管，社招站；Workday（校招站被 robots 禁了，不读）。2026-10-02 读到 305 个（纽约 91、香港 3、上海 3）
+- name: Blackstone
+  hq: New York
+  group: buy_side
+  ats_type: workday
+  origin: https://blackstone.wd1.myworkdayjobs.com
+  tenant: blackstone
+  site: Blackstone_Careers
+  careers_url: https://blackstone.wd1.myworkdayjobs.com/Blackstone_Careers
+  presets: [finance]
+  why: 私募股权，社招站；Workday。2026-10-02 读到 165 个（纽约 77、香港 5）
+- name: Blackstone（校招）
+  hq: New York
+  group: buy_side
+  ats_type: workday
+  origin: https://blackstone.wd1.myworkdayjobs.com
+  tenant: blackstone
+  site: Blackstone_Campus_Careers
+  careers_url: https://blackstone.wd1.myworkdayjobs.com/Blackstone_Campus_Careers
+  presets: [finance]
+  why: Blackstone 的校招站。2026-10-02 读到 31 个（纽约 3、香港 1）
+- name: KKR
+  hq: New York
+  group: buy_side
+  ats_type: greenhouse
+  board: stage
+  careers_url: https://job-boards.greenhouse.io/stage
+  presets: [finance]
+  why: 私募股权；Greenhouse 板名是 stage（不是 kkr），板上混着 Global Atlantic 的岗位。2026-10-02 读到 138 个（纽约 38）
+- name: Carlyle
+  hq: Washington, DC
+  group: buy_side
+  ats_type: workday
+  origin: https://carlyle.wd1.myworkdayjobs.com
+  tenant: carlyle
+  site: Carlyle
+  careers_url: https://carlyle.wd1.myworkdayjobs.com/Carlyle
+  presets: [finance]
+  why: 私募股权；Workday。2026-10-02 读到 75 个（纽约 28、香港 3）
+- name: 富达投资
+  hq: Boston
+  group: buy_side
+  ats_type: workday
+  origin: https://fmr.wd1.myworkdayjobs.com
+  tenant: fmr
+  site: FidelityCareers
+  careers_url: https://fmr.wd1.myworkdayjobs.com/FidelityCareers
+  presets: [finance]
+  why: 美国资管（Fidelity Investments），岗位几乎都在美国；Workday。2026-10-02 读到 801 个（纽约 4）
+- name: 富达国际
+  hq: London
+  group: buy_side
+  ats_type: workday
+  origin: https://fil.wd3.myworkdayjobs.com
+  tenant: fil
+  site: '001'
+  careers_url: https://fil.wd3.myworkdayjobs.com/001
+  presets: [finance]
+  why: 富达国际（Fidelity International），大陆的岗位都在大连；Workday 站点 001（要加引号，不加会被读成数字 1）。2026-10-02 读到 69 个
+- name: 先锋领航
+  hq: Malvern
+  group: buy_side
+  ats_type: workday
+  origin: https://vanguard.wd5.myworkdayjobs.com
+  tenant: vanguard
+  site: vanguard_external
+  careers_url: https://vanguard.wd5.myworkdayjobs.com/vanguard_external
+  presets: [finance]
+  why: 美国资管（Vanguard），岗位都在美国；Workday。2026-10-02 读到 351 个
+- name: Point72
+  hq: Stamford
+  group: buy_side
+  ats_type: greenhouse
+  board: point72
+  careers_url: https://job-boards.greenhouse.io/point72
+  presets: [finance]
+  why: 对冲基金，校招项目也在这块板上；Greenhouse。2026-10-02 读到 214 个（纽约 93、香港 20）
+- name: Jane Street
+  hq: New York
+  group: buy_side
+  ats_type: greenhouse
+  board: janestreet
+  careers_url: https://job-boards.greenhouse.io/janestreet
+  presets: [finance]
+  why: 量化交易，香港岗位不少；Greenhouse。2026-10-02 读到 231 个（纽约 98、香港 57）
+- name: 桥水
+  hq: Westport
+  group: buy_side
+  ats_type: greenhouse
+  board: bridgewater89
+  careers_url: https://job-boards.greenhouse.io/bridgewater89
+  presets: [finance]
+  why: 对冲基金（美国），官网的职位页转到这块 Greenhouse 板；中国的桥水在大易上，没收。2026-10-02 读到 17 个（纽约 9）
+- name: 红杉中国
+  hq: 北京
+  group: buy_side
+  ats_type: larkhire
+  board: hongshan
+  origin: https://hongshan.jobs.feishu.cn
+  position_path: /index/position
+  queries: ['']
+  careers_url: https://hongshan.jobs.feishu.cn/index
+  presets: [finance]
+  why: 风险投资；飞书招聘（larkhire），岗位很少，所以不按搜索词、整站读（queries 写一个空词）。2026-10-02 读到 2 个（北京）
+
+# ── 没收进来的（不在包里）────────────────────────────────────────────────────
+# robots.txt 禁止（能读也不读）：
+#   国泰海通 hr.gtht.com：整站禁止
+#   花旗 Workday（citi.wd5 站点 2）、BlackRock 校招 Workday（BlackRock_Early_Careers_Program）：robots.txt 禁了这两个站
+#   渣打 jobs.standardchartered.com：取数接口在禁止的路径下 · D. E. Shaw：禁了职位列表页
+# 只放入口（自己打开看，不自动读）：
+#   中信证券 careers.citics.com：有验证码组件，前面还有一层防护
+#   申万宏源：招聘系统没认出来，投递走官网和公众号 · 兴证全球基金：大易老版（/wt/ 地址），翻页要页面令牌
+#   工行、农行、中行、交行、邮储、兴业银行、浦发、民生、宁波银行：自建站，接口要令牌、加密或签名，或者在别家平台上报名
+#   中信银行 job.citicbank.com：已经换成自建站，不在大易上了
+#   光大银行、江苏银行：挑战页，不绕过
+#   瑞银、法国巴黎银行（403）、汇丰、Millennium（Eightfold 接口 403）、Citadel（挑战页）、Centerview（只有带验证码的投递表单）
+#   野村校招、富达国际校招（Oleeo 板是挑战页）
+#   国聘 www.iguopin.com：接口要签名
+# 要新写适配器：
+#   平安集团招聘站 talent.pingan.com：一个适配器能读平安银行、平安证券等十几家子公司（集团社招一万三千多个）
+#   北森老版（没有 JSON 接口，页面服务端渲染）：华夏基金、汇添富、景顺长城、交银施罗德、新华保险
+#   建设银行 job.ccb.com（校招量很大）· 招商银行社招 career.cmbchina.com · 鹏华基金 job.phfund.com.cn
+#   Eightfold：摩根士丹利、花旗 · 摩根士丹利校招（官网自己的 JSON）· SuccessFactors：野村社招
+#   Avature：麦格理、Two Sigma · BlackRock 校招（careers.blackrock.com 的分类页）
+# 当天 0 个、或者门户关了：
+#   易方达 job.efunds.com.cn → 大易门户 SU67ac68866202cc7916aea66e：2026-10-02 接口回「该官网已关闭」
+#   工银瑞信 icbcubs.hotjob.cn：2026-10-02 三类都是 0 个
+#   中国太保产险校招站（Moka cpicproperty 150956）：2026-10-02 读到 0 个
+#   广发基金 gffunds.jobs.feishu.cn：2026-10-02 飞书接口返回 0 个
+# 没写进来：
+#   美国银行美国社招站（ghr.wd1 Lateral-US）：近两千个岗位，等配好纽约的地点筛选（applied_facets）再加
+#   桥水中国 www.bridgewater.cn/careers：在大易上，门户编号还没核
+#   高瓴：没找到招聘系统

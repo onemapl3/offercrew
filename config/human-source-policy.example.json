@@ -1,0 +1,24 @@
+{
+  "linuxdo": {
+    "enabled": false,
+    "reason": "这个网站现在拦着程序访问，先暂停；其他真人帖来源照常扫。",
+    "dev_note": "公开 categories.json 持续被 Cloudflare 返回 HTTP 403；暂停此源，其他真人源继续运行。恢复前需核验可用的授权浏览器路径或公开接口。",
+    "paused_at": null
+  },
+  "boss": {
+    "enabled": false,
+    "reason": "默认关着：在专用 Chrome 里登录这个网站后，改成 true。"
+  },
+  "maimai": {
+    "enabled": false,
+    "reason": "默认关着：在专用 Chrome 里登录这个网站后，改成 true。"
+  },
+  "linkedin": {
+    "enabled": true,
+    "reason": "登录检查确认你登录了 LinkedIn 才会扫，没登录时自动关着；不想扫就改成 false。"
+  },
+  "xiaohongshu": {
+    "enabled": false,
+    "reason": "默认关着：在专用 Chrome 里登录这个网站后，改成 true。"
+  }
+}

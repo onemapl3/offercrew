@@ -1,0 +1,47 @@
+{
+  "note": "本机运行配置模板。复制成 config/host.json（本机文件，不进仓库）再改；缺哪一项就用代码里的中性缺省值。",
+  "executor": "codex",
+  "claude_provider": "claude_subscription",
+  "models": [
+    "sonnet"
+  ],
+  "max_turns": 60,
+  "timeout_minutes": 25,
+  "idle_minutes": 8,
+  "auth_file": "private/claude-api.auth.json",
+  "auth_style": "bearer",
+  "config_dir": "private/claude-config",
+  "codex_models": {
+    "chain": [
+      {
+        "provider": "openai",
+        "model": "default",
+        "effort": "medium"
+      }
+    ],
+    "cycle_effort": "high",
+    "fallback": {
+      "provider": "openai",
+      "model": "default"
+    }
+  },
+  "models_note": "执行器的模型：models 是 Claude 执行器按顺序试的型号（写别名 sonnet / opus 就行）；codex_models 里的 default = 用 codex 自己的默认模型。在工作台「设置 → 模型与参数」里换成你账号里有的具体型号。",
+  "run_host": "your-mac.local",
+  "run_host_note": "只有主机名等于 run_host 的机器才运行 OfferCrew（工作台、周期、巡检、即时执行器）。留空或保留示例值 your-mac.local 表示任何机器都可以；有两台机器同步同一份仓库时改成真实主机名，避免两台同时推送。",
+  "timezone": "Asia/Shanghai",
+  "timezone_note": "日期目录、「今天」、安静时段和卡片上的时间都按它算（IANA 时区名，lib/tz.mjs）。",
+  "system_auto_repair": {
+    "enabled": false,
+    "local_ai": false
+  },
+  "system_auto_repair_note": "System 自动修复：工作台发现流程外的错误时，不等你点就交给执行器（Codex / Claude，不带沙箱）去查：只修数据和状态记录，代码问题写好改法交给你，不改代码（跑完有代码守卫核对）。新装先关着；执行器配好、愿意让它自动去查再改成 true（设置页也能开）。桌面版另看 local_ai：默认 false，只照标准做法自己处理（lib/system/playbook.mjs），表上没有的不交给本机 AI；本机 AI 打开、local_ai 改成 true 才照旧交给它。命令行装的不看 local_ai。",
+  "system_playbook": {
+    "model_breaker_minutes": 30,
+    "model_breaker_failures": 3,
+    "model_breaker_retryable_failures": 3,
+    "source_pause_hours": 24,
+    "source_pause_rounds": 3,
+    "source_pauses_per_day": 3
+  },
+  "system_playbook_note": "System 的标准做法（lib/system/playbook.mjs）。模型熔断：一位成员的某个底座钥匙失效（401、403），或者连续 model_breaker_failures 次不可重试的错、连续 model_breaker_retryable_failures 次 404 / 429 / 5xx（网络不通、超时只在同一次调用里后面的底座调通了才算），先跳过 model_breaker_minutes 分钟，按清单试下一个，清单里只剩它一个时不跳过。招聘源：连续 source_pause_rounds 轮读不到（整台电脑断网的那几轮不算）就停 source_pause_hours 小时，到点自动恢复再读一次；每天最多停 source_pauses_per_day 个。"
+}

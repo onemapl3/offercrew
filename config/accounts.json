@@ -1,0 +1,143 @@
+{
+  "note": "账号家族：用同一套账号登录的站点归成一组（lib/accounts.mjs）。shared_login=true 的家族，任一站点登录过，整组都算登录；per_tenant=true 的（Workday、飞书招聘、Moka、北森）每个公司租户各是一个账号。收件箱里「要你登录」按家族合成一条，登录后整组被挡住的任务一起恢复。probe 是登录检查（有登录信在等时系统自己定时去看，见 lib/login-watch.mjs）：打开 url，落到 logged_out_url、页面上有一整行是 logged_out_lines、或前 1500 字出现 logged_out_text，就算没登录；配了已登录的证据（logged_in_selector：这个元素；logged_in_logout：「退出登录」一类的按钮或链接）就必须找到它才算登好了，没找到又没看到没登录的迹象算「看不出来」（lib/login-probe.mjs）。url 里的 {host} 换成按公司分开的账号的域名。confirmed=false：已登录的证据还没在真的登录状态下核对过，系统照样去看，但收件箱不承诺「会自己发现」。one_click_apply：这个门户在岗位页点一个按钮就直接投出去（用门户账号里存的简历），没有表要填——系统不填不点，交给你自己点（lib/one-click-apply.mjs）。",
+  "families": {
+    "alibaba": {
+      "label": "阿里招聘（阿里集团各业务招聘站）",
+      "kind": "portal",
+      "shared_login": true,
+      "login_url": "https://talent-holding.alibaba.com/off-campus/position-list?lang=zh",
+      "hosts": ["talent.alibaba.com", "talent-holding.alibaba.com", "careers.aliyun.com", "aidc-jobs.alibaba.com", "talent.taotian.com", "talent.ele.me", "talent.fliggy.com", "careers-tongyi.alibaba.com", "talent.dingtalk.com", "talent.quark.cn", "recruitment.t-head.cn", "talent.amap.com", "talent.cainiao.com", "jobs.hujing-dme.com", "hire.freshippo.com", "careers.alihealth.cn", "talent.lingxigames.com", "talent-post.alibaba.com", "talent.agtech.com", "jobs.alisports.com"],
+      "keywords": ["阿里", "阿里云", "淘天", "通义", "千问", "钉钉", "高德", "菜鸟", "夸克", "飞猪", "饿了么", "盒马", "阿里国际", "AIDC", "Alibaba", "Aliyun"],
+      "probe": { "url": "https://talent-holding.alibaba.com/off-campus/position-list?lang=zh", "logged_out_url": "login\\.(taobao|alibaba|alipay|tmall)\\.com|havanalogin|passport|/login", "logged_out_lines": "^(登录|立即登录|登录 / 注册|登录/注册|注册/登录|Sign in|Sign In|Log in)$", "logged_in_logout": true, "confirmed": false },
+      "how": "在任一阿里招聘站点右上角登录（淘宝 / 支付宝 / 手机号），其它业务集团的站点用同一账号。",
+      "one_click_apply": { "name": "阿里招聘", "button": "投递简历", "pages": "position-detail" }
+    },
+    "antgroup": {
+      "label": "蚂蚁集团招聘",
+      "kind": "portal",
+      "shared_login": true,
+      "login_url": "https://talent.antgroup.com/off-campus",
+      "hosts": ["talent.antgroup.com", "hrcareersweb.antgroup.com"],
+      "keywords": ["蚂蚁", "支付宝", "Ant Group"],
+      "probe": { "url": "https://talent.antgroup.com/off-campus", "logged_out_url": "auth\\.alipay\\.com|passport|/login", "logged_out_lines": "^(登录|立即登录|登录 / 注册|登录/注册|注册/登录|Sign in|Sign In|Log in)$", "logged_in_logout": true, "confirmed": false }
+    },
+    "bytedance": {
+      "label": "字节跳动招聘",
+      "kind": "portal",
+      "shared_login": true,
+      "login_url": "https://jobs.bytedance.com/experienced/position",
+      "hosts": ["jobs.bytedance.com", "job.bytedance.com"],
+      "keywords": ["字节", "ByteDance", "抖音"],
+      "probe": { "url": "https://jobs.bytedance.com/experienced/position", "logged_out_url": "/login|passport|sso\\.", "logged_out_lines": "^(登录|立即登录|登录 / 注册|登录/注册|注册/登录|Sign in|Sign In|Log in)$", "logged_in_logout": true, "confirmed": false }
+    },
+    "netease": {
+      "label": "网易招聘（网易通行证）",
+      "kind": "portal",
+      "shared_login": true,
+      "login_url": "https://hr.163.com/job-list.html?lang=zh",
+      "hosts": ["hr.163.com"],
+      "keywords": ["网易", "NetEase"],
+      "probe": { "url": "https://hr.163.com/index.html", "logged_out_url": "reg\\.163\\.com|passport|/login", "logged_out_lines": "^(登录|立即登录|登录 / 注册|登录/注册|注册/登录|Sign in|Sign In|Log in)$", "logged_in_logout": true, "confirmed": false }
+    },
+    "tencent": {
+      "label": "腾讯招聘",
+      "kind": "portal",
+      "shared_login": true,
+      "login_url": "https://careers.tencent.com/",
+      "hosts": ["careers.tencent.com", "join.qq.com"],
+      "keywords": ["腾讯", "Tencent"],
+      "probe": { "url": "https://careers.tencent.com/", "logged_out_url": "ptlogin|passport|/login", "logged_out_lines": "^(登录|立即登录|登录 / 注册|登录/注册|注册/登录|Sign in|Sign In|Log in)$", "logged_in_logout": true, "confirmed": false }
+    },
+    "microsoft": {
+      "label": "微软招聘（Microsoft 账号）",
+      "kind": "portal",
+      "shared_login": true,
+      "login_url": "https://apply.careers.microsoft.com/careers",
+      "hosts": ["careers.microsoft.com", "apply.careers.microsoft.com", "jobs.careers.microsoft.com"],
+      "keywords": ["微软", "Microsoft"],
+      "probe": { "url": "https://apply.careers.microsoft.com/careers", "logged_out_url": "login\\.(microsoftonline|live)\\.com|/login|signin", "logged_out_lines": "^(登录|立即登录|登录 / 注册|登录/注册|注册/登录|Sign in|Sign In|Log in)$", "logged_in_selector": "uhf-mecontrol[data-msft-auth-visibility=\"signed-in\"]", "logged_in_logout": true, "confirmed": false }
+    },
+    "workday": {
+      "label": "Workday（每家公司单独注册）",
+      "kind": "portal",
+      "per_tenant": true,
+      "hosts": ["myworkdayjobs.com", "myworkdaysite.com"],
+      "keywords": ["Workday"],
+      "how": "每家公司的 Workday 都要单独注册候选人账号并设密码，只能本人注册登录。"
+    },
+    "feishu_hire": {
+      "label": "飞书招聘（每家公司单独登录）",
+      "kind": "portal",
+      "per_tenant": true,
+      "hosts": ["jobs.feishu.cn"],
+      "keywords": ["飞书招聘"]
+    },
+    "moka": {
+      "label": "Moka 招聘（每家公司单独验证）",
+      "kind": "portal",
+      "per_tenant": true,
+      "hosts": ["mokahr.com"],
+      "keywords": ["Moka"]
+    },
+    "beisen": {
+      "label": "北森招聘（每家公司单独注册）",
+      "kind": "portal",
+      "per_tenant": true,
+      "hosts": ["zhiye.com"],
+      "keywords": ["北森"],
+      "probe": { "url": "https://{host}/", "logged_out_url": "/login|/account/login|passport", "logged_out_lines": "^(登录|立即登录|登录 / 注册|登录/注册|注册/登录|Sign in|Sign In|Log in)$", "logged_in_logout": true, "confirmed": false }
+    },
+    "smartrecruiters": {
+      "label": "SmartRecruiters 候选人账号",
+      "kind": "portal",
+      "shared_login": true,
+      "login_url": "https://www.smartrecruiters.com/",
+      "hosts": ["smartrecruiters.com"],
+      "keywords": ["SmartRecruiters"]
+    },
+    "linkedin": {
+      "label": "LinkedIn",
+      "kind": "platform",
+      "shared_login": true,
+      "login_url": "https://www.linkedin.com/login",
+      "hosts": ["linkedin.com"],
+      "keywords": ["LinkedIn", "领英"],
+      "probe": { "url": "https://www.linkedin.com/feed/", "logged_out_url": "/(login|uas|authwall|checkpoint|signup)", "logged_out_lines": "^(Sign in|Join now|登录|加入领英|立即加入)$" }
+    },
+    "maimai": {
+      "label": "脉脉",
+      "kind": "platform",
+      "shared_login": true,
+      "login_url": "https://maimai.cn/platform/login",
+      "hosts": ["maimai.cn"],
+      "keywords": ["脉脉"],
+      "probe": { "url": "https://maimai.cn/web/search_center?type=feed&query=AI", "logged_out_url": "/platform/login", "logged_out_text": "扫码登录|登录脉脉" }
+    },
+    "boss": {
+      "label": "BOSS 直聘",
+      "kind": "platform",
+      "shared_login": true,
+      "login_url": "https://www.zhipin.com/web/user/?ka=header-login",
+      "hosts": ["zhipin.com"],
+      "keywords": ["BOSS", "Boss 直聘", "Boss直聘", "直聘"],
+      "probe": { "url": "https://www.zhipin.com/web/geek/chat", "logged_out_url": "/web/user", "logged_out_text": "登录/注册|扫码登录" }
+    },
+    "liepin": {
+      "label": "猎聘",
+      "kind": "platform",
+      "shared_login": true,
+      "login_url": "https://www.liepin.com/",
+      "hosts": ["liepin.com"],
+      "keywords": ["猎聘"]
+    },
+    "xiaohongshu": {
+      "label": "小红书",
+      "kind": "platform",
+      "shared_login": true,
+      "login_url": "https://www.xiaohongshu.com/explore",
+      "hosts": ["xiaohongshu.com"],
+      "keywords": ["小红书"],
+      "probe": { "url": "https://www.xiaohongshu.com/explore", "logged_out_url": "/login", "logged_out_lines": "^(登录|手机号登录|扫码登录|登录后查看更多|马上登录即可)$" }
+    }
+  }
+}

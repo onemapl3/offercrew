@@ -1,0 +1,21 @@
+{
+  "enabled": true,
+  "model": "jev-latest",
+  "timeout_ms": 45000,
+  "max_retries": 3,
+  "concurrency": 6,
+  "cache": true,
+  "max_state_chars": 60000,
+  "thresholds": {
+    "prefilter_choice": 0.7,
+    "match_status": 0.6,
+    "critical": 0.6,
+    "recommend_fit": 1.5,
+    "mail_kind": 0.7,
+    "mail_code": 0.85,
+    "intent_verb": 0.75,
+    "intent_send_verbs_confirm_only": true,
+    "referral": 0.7,
+    "contact_email": 0.7
+  }
+}

@@ -1,0 +1,155 @@
+# 示例资料 · 金融（虚构的示例人物，不能原样复制）
+#
+# 一位在美国读金融本科、2026 年毕业的应届生：做过一段投行暑期实习、一段投研实习，CFA 一级已通过，
+# 持 F-1 OPT，想在纽约、上海或香港找投行 / 资管方向的第一份全职。人、公司、学校、邮箱、电话全是编的。
+# 「开始使用 → 你的方向 → 看示例」打开的就是它。不要把它复制成 candidate/facts.yaml 就开始用——已经有值的项，
+# 导入简历时默认不覆盖，一不留神就还是示例人物的名字和邮箱；outreach、positioning、standard_answers 这几段
+# 页面上改不到，会原样进你的首联和私信。先在「开始使用」导入简历（或点「编辑」手填）生成你自己的文件，
+# 再参照这里，把用得上的段落抄过去，逐项改成你自己的话。
+#
+# 金融方向特别要填的（招聘方先看这几样，判断岗位时也按它们来）：
+#   - education：学校、专业、起止年月（毕业时间决定你按「在读 / 应届」还是「有经验」来推岗位），GPA 写上；
+#   - certifications：CFA / FRM / CPA / 证券从业资格……每条写证书名和状态原话（已通过、Level I passed、在考）；
+#   - career_highlights：每段实习写公司、职位、起止年月和做了什么（交易规模、模型、覆盖了几家公司）；
+#     实习不算进全职年限，但它是金融招聘最看的经历；
+#   - work_authorization：在哪儿能合法工作。在美国的岗位几乎都会问现在和将来要不要签证担保；
+#   - preferences.tracks：金融里想做哪几类（投行、资管 / 投研、风控 / 合规、量化、财务 / 会计、销售交易），不写就都看。
+
+identity:
+  name_en: Morgan Example
+  name_zh: 林示例
+  email: morgan.example@example.com # 印在简历上的邮箱
+  # 表单里填的电话。字段名沿用旧写法（phone_cn），美国号码也写在这里。
+  phone_cn: "+1 212 555 0142"
+  linkedin: https://linkedin.com/in/morgan-example
+  over_18: true
+
+location:
+  current_city: New York # 现居城市
+  # 想在哪些城市工作，按优先级。英文岗位写的是 New York，所以这里也写英文；上海、香港中英文写法都认得。
+  target_cities: [ New York, 上海, 香港 ]
+  relocation_ok: 美国其他城市、新加坡也可以考虑 # 原话，给判断模型读
+  work_mode_preference: [ onsite, hybrid ] # 金融岗大多坐班
+  onsite_5days_acceptable: true
+  travel_ok: 可以出差
+
+work_authorization:
+  china_mainland: citizen
+  # us：citizen / permanent_resident / f1_opt / f1_stem_opt / h1b / needs_sponsorship / none，按你现在的身份选一个。
+  us: f1_opt
+  overseas_remote: 不考虑远程
+
+availability:
+  current_status: 应届（2026 年 5 月毕业） # 应届 / 在读 / 在职 / 已离职，照实写
+  earliest_start: 随时可以入职（OPT 已批）
+
+compensation:
+  currency_primary: USD
+  expected_annual_usd: base 100,000 以上，可谈（纽约） # 美国岗位的期望
+  expected_annual_cny: 国内岗位 30 万以上，可谈 # 上海、香港的岗位按当地市场谈
+
+preferences:
+  directions: [ finance ] # 求职方向，第一个是主方向；想顺带看数据分析就写 [ finance, data ]
+  tracks: [ investment_banking, asset_management ] # 金融里的细分，按想做的顺序
+  role_families: # 自由文字的补充说明，给判断模型读；不写也行
+    - Investment Banking Analyst（并购、行业组）
+    - 资产管理 / 行业研究的分析师
+  company_priority: [ 投行, 资管 / 基金, 券商研究所 ]
+  hard_exclusions:
+    - 保险代理、理财顾问这类拿佣金的销售岗
+    - 柜员、客服这类纯操作岗
+  soft_exclusions: 入职就要求 CPA 的审计岗
+
+resume_routing: # 简历 PDF（仓库内相对路径）；只有一份就两项写同一个文件
+  english_pdf: candidate/Morgan-Example-Resume.pdf
+  chinese_pdf: candidate/林示例-简历.pdf
+  rule: 美国岗位和外资投行 → 英文；国内券商、基金 → 中文
+
+standard_answers: # 申请表常见问题的固定回答
+  why_leaving: 应届毕业，找第一份全职工作
+  biggest_strength: 建模快、细致，能跟上交易的节奏
+  management_experience: no
+  referral_source_default: Company website / campus recruiting
+  relatives_at_company: false
+  previously_applied_default: false
+  disability_veteran_etc: prefer_not_to_answer
+  background_check_ok: true
+  # 美国申请表常问「现在或将来是否需要签证担保」：OPT 期间能工作，但之后要雇主办 H-1B，照实答 Yes。
+  visa_sponsorship: 现在用 OPT 可以工作，将来需要 H-1B 担保
+  languages: [ 中文（母语）, English（流利，工作语言） ]
+
+alumni_networks: # 英文校名 / 前公司，判断校友与前同事时用
+  - Example University (BS Finance, 2022-2026)
+  - Sample University (Exchange, 2024 spring)
+
+# current_work：应届生还没有现职，这一段不写（在职的人写公司、职位、入职年月和职责）。
+
+career_highlights: # 实习和工作都写在这里，按时间倒序
+  entries:
+    - company: Woodgrove Bank
+      dates: 2025-06 至 2025-08
+      role: Investment Banking Summer Analyst
+      evidence:
+        - 为两个卖方并购项目（企业价值 3–8 亿美元）搭三表模型和 DCF 估值，做可比公司 / 可比交易分析。
+        - 筛选 60 多家潜在买方，起草信息备忘录（CIM）的行业章节。
+    - company: Fabrikam Capital
+      dates: 2024-06 至 2024-08
+      role: 投资研究实习生（消费行业）
+      evidence:
+        - 跟踪 12 家消费公司的月度数据和财报，更新盈利预测模型。
+        - 参与两篇行业深度报告的数据章节；用 Python（pandas）把电商价格数据整理成周度跟踪表。
+
+personal_projects: # 学生投资社团、案例比赛、自己做的研究都可以写
+  entries:
+    - name: 消费行业估值模型
+      ownership: 个人研究
+      evidence: 独立搭了覆盖 8 家消费公司的三表模型和 DCF，写成一份买入推荐，在投资社团的组合里被采纳。
+      relevance: [ 估值, 投研 ]
+
+education:
+  - school: Example University
+    degree: BS in Finance, Minor in Data Science
+    dates: 2022-09 至 2026-05 # 毕业时间：决定你按应届生来推岗位
+    gpa: "3.7/4.0" # 写成字符串（带引号）
+  - school: Sample University
+    degree: 交换学期 · 经济学
+    dates: 2024-01 至 2024-05
+
+certifications: # 证书：name + status（原话）+ 可选的 date
+  - { name: CFA, status: Level I passed, date: 2026-02 }
+  - { name: FINRA SIE, status: passed, date: 2025-12 }
+  - { name: 证券从业资格, status: 已通过, date: 2025-08 }
+
+skills: [ Excel（三表模型、DCF、LBO）, PowerPoint, Bloomberg Terminal, Capital IQ, FactSet, Python（pandas）, SQL ]
+
+experience_summary:
+  years: 0 # 全职年限。金融招聘说的「N 年经验」指全职，实习不算
+  outreach_wording: 两段金融实习（投行、投研） # 中文信里的经历说法
+  outreach_wording_en: two finance internships, in investment banking and equity research
+  calculation: 只算全职；实习照实写成实习
+  rules:
+    - 不把实习说成全职工作经验。
+
+positioning: # 所有材料、申请信、自我介绍按这里讲
+  headline: 做过投行和投研实习、上手就能建模的金融应届生
+  lead_with: 投行暑期实习里的两个并购项目 + CFA 一级
+  project_priority: # 讲经历时按这个顺序引用
+    - name: 消费行业估值模型
+      why: 从头到尾自己做的一份研究，能讲清楚假设
+      use_for: 投研、资管面试讲选股逻辑
+    - name: Woodgrove Bank 卖方并购项目
+      why: 完整做过估值和买方名单
+      use_for: 投行面试讲交易经历
+
+# 对外短消息和判断模型里用到的本人说法。缺哪一项，消息里就不写那一句，不会编。
+outreach:
+  education: Example University 金融本科（2026 届） # 「我是某某，」后面的学历
+  # current_role：「现职做……」那一句。应届生没有现职，不写，消息里就没有这一句。
+  extra: CFA 一级已通过 # 平台私信里接在经历后面的一句
+  intro: 我是金融应届生，做过投行实习 # 脉脉加好友附言（50 字以内）的自我介绍
+  project_line: 独立做过消费行业估值模型 # 附言里的项目一句
+  project_line_short: 做过消费行业估值模型 # 字数紧时用的短写法
+  school_names: # 判断对方是不是校友时认的学校叫法，一所一行
+    - Example University
+    - Sample University
+  language_evidence: 中文母语，英语流利（在美国读本科四年） # 判断语言要求时引用的那条证据

@@ -1,0 +1,131 @@
+{
+  "preset": "design",
+  "label": "设计（UI、UX、交互、视觉、产品设计……）",
+  "note": "渠道包：真人招聘帖从哪里读、默认开不开、按这个方向用什么词。要登录的来源默认关（要先在专用 Chrome 里登录，再到 config/human-source-policy.json 里打开）；BOSS 直聘的条款禁止自动化：这里只给你一个搜好的入口，你自己打开看，系统不自动搜、不打招呼；聊天消息另有一个开关，默认关着，打开后每小时只读看一眼聊天列表，没读的对话不点开。公开来源（V2EX、电鸭、阮一峰周刊、Hacker News）不用登录：keywords 用来判断一条帖子是不是这个方向的岗位；要登录的来源 keywords 是搜索词，城市会按你的目标城市自动加在前面。",
+  "sources": {
+    "v2ex": {
+      "name": "V2EX 酷工作",
+      "kind": "public",
+      "enabled": true,
+      "requires_login": false,
+      "keywords_use": "filter",
+      "keywords": [
+        "UI",
+        "UX",
+        "交互设计",
+        "视觉设计",
+        "设计师",
+        "产品设计",
+        "体验设计",
+        "designer",
+        "product designer"
+      ],
+      "why": "公开接口（V2EX 的 jobs 节点），不用登录，只读帖子、不回帖。"
+    },
+    "eleduck": {
+      "name": "电鸭",
+      "kind": "public",
+      "enabled": true,
+      "requires_login": false,
+      "keywords_use": "filter",
+      "keywords": [
+        "招聘",
+        "设计"
+      ],
+      "why": "公开页面（电鸭社区的招聘分类），不用登录，远程岗位多。先按标题里的这几个词挑帖子，再看正文。"
+    },
+    "ruanyf": {
+      "name": "阮一峰周刊 · 谁在招人",
+      "kind": "public",
+      "enabled": true,
+      "requires_login": false,
+      "keywords_use": "filter",
+      "keywords": [
+        "UI",
+        "UX",
+        "交互设计",
+        "视觉设计",
+        "设计师",
+        "产品设计",
+        "体验设计",
+        "designer",
+        "product designer"
+      ],
+      "why": "公开的 GitHub 议题（阮一峰《科技爱好者周刊》每月的「谁在招人」），不用登录。"
+    },
+    "hn": {
+      "name": "Hacker News · Who is hiring",
+      "kind": "public",
+      "enabled": true,
+      "requires_login": false,
+      "keywords_use": "filter",
+      "keywords": [
+        "UI",
+        "UX",
+        "交互设计",
+        "视觉设计",
+        "设计师",
+        "产品设计",
+        "体验设计",
+        "designer",
+        "product designer"
+      ],
+      "why": "公开接口（Hacker News 每月的 Who is hiring），不用登录；只收写明招中国或亚太远程的帖子。"
+    },
+    "boss": {
+      "name": "BOSS 直聘",
+      "kind": "manual",
+      "enabled": false,
+      "requires_login": true,
+      "automation": "none",
+      "keywords_use": "search",
+      "keywords": [
+        "UI设计师",
+        "交互设计师",
+        "视觉设计师"
+      ],
+      "open_url": "https://www.zhipin.com/web/geek/jobs?query={keyword}",
+      "why": "BOSS 直聘的用户协议禁止用自动化程序或外挂访问、操作平台。这里只放按方向搜好的入口（open_url），你自己打开、自己看、自己聊，系统不自动搜、不打招呼。聊天消息另有一个开关（设置 → 发现与匹配），默认关着，打开后每小时只读看一眼聊天列表，没读的对话不点开。默认关。"
+    },
+    "maimai": {
+      "name": "脉脉招聘帖",
+      "kind": "login",
+      "enabled": false,
+      "requires_login": true,
+      "keywords_use": "search",
+      "keywords": [
+        "招聘 设计师",
+        "内推 交互设计",
+        "UI 设计",
+        "远程 设计"
+      ],
+      "why": "要登录：脉脉的招聘帖只有登录后才看得到，要先在专用 Chrome 里登录；默认关。脉脉消息同步暂不可用，请打开脉脉聊天手动查看和回复。"
+    },
+    "linkedin": {
+      "name": "LinkedIn 帖子",
+      "kind": "login",
+      "enabled": false,
+      "requires_login": true,
+      "keywords_use": "search",
+      "keywords": [
+        "招聘 UI 设计",
+        "交互设计 内推",
+        "hiring product designer",
+        "hiring UX designer remote"
+      ],
+      "why": "要登录：LinkedIn 的 robots.txt 不许程序访问、条款禁止抓取，只能在你登录好的专用 Chrome 里看；默认关。"
+    },
+    "xiaohongshu": {
+      "name": "小红书招聘帖",
+      "kind": "login",
+      "enabled": false,
+      "requires_login": true,
+      "keywords_use": "search",
+      "keywords": [
+        "内推 设计师",
+        "招聘 UI"
+      ],
+      "why": "要登录：小红书的内推帖要登录才能搜，要先在专用 Chrome 里登录；默认关。"
+    }
+  }
+}

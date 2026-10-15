@@ -1,0 +1,156 @@
+# 示例资料 · 工程师（软件与 AI；虚构的示例人物，不能原样复制）
+#
+# 这份文件给你对照着写自己的资料：人、公司、学校、邮箱、电话、项目全是编的。「开始使用 → 你的方向 → 看示例」
+# 打开的就是它。不要把它复制成 candidate/facts.yaml 就开始用——已经有值的项，导入简历时默认不覆盖，一不留神
+# 就还是示例人物的名字和邮箱；outreach、positioning、standard_answers 这几段页面上改不到，会原样进你的首联和私信。
+# 正确的做法：先在「开始使用」导入简历（或点「编辑」手填）生成你自己的 candidate/facts.yaml，再参照这里，
+# 把用得上的段落抄过去，逐项改成你自己的话。
+#
+# 软件方向特别要填的：
+#   - personal_projects：个人项目、开源和 GitHub 链接。判断岗位时它们是你的证据，写清楚你做了哪一部分；
+#   - current_work 和 career_highlights：每段经历做了什么，尽量带数字（延迟、调用量、用户数……）；
+#   - preferences.role_families：想做前端、测试、算法、产品这类方向时写上，入库前才不会被当成后端岗筛掉。
+# 内容和 candidate/facts.example.yaml 相同（那一份是同一个示例人物，演示数据和测试在读它）。
+
+identity:
+  name_en: Alex Example
+  name_zh: 示例
+  email: alex@example.com # 印在简历上的邮箱
+  # 系统读写的 Gmail（连接器 / OAuth 必须是它；发信、对账、ATS 表单的邮箱栏都用它）。和上面一样就不用写。
+  mailbox: alex.jobs@example.com
+  phone_cn: "+86 13800000000"
+  linkedin: https://linkedin.com/in/alex-example
+  github: https://github.com/alex-example
+  over_18: true
+
+location:
+  current_city: 上海 # 现居城市
+  # 想在哪些城市工作，按优先级：前面的排在前面（列表、名额、看板、拟投清单都按这个顺序）。
+  target_cities: [ 杭州, 上海 ]
+  # 为好机会愿意搬去的城市：可以投、不因城市拦下投递，但不单独成组（列表里归「其他」）。
+  # 也写在 target_cities 里的城市同样按可搬迁处理。
+  relocation_cities: [ 苏州 ]
+  relocation_ok: 长三角城市可以考虑 # 原话，给判断模型读
+  work_mode_preference: [ remote_china, hybrid, onsite ] # 按优先级
+  onsite_5days_acceptable: true
+  travel_ok: 可以短期出差
+
+work_authorization:
+  china_mainland: citizen
+  overseas_remote: only_if_employer_supports_china_or_eor
+  us: none
+
+availability:
+  current_status: employed
+  notice_period_days: 30
+  earliest_start: 接 offer 后 30 天
+  notice_can_shorten: unknown
+
+compensation:
+  currency_primary: CNY
+  expected_annual_cny: above 400,000 and negotiable # 写区间或底线
+  floor_annual_cny: 280,000
+  expected_annual_usd_remote: negotiable
+  current_annual_cny: prefer_not_to_disclose
+  equity_preference: cash first
+
+preferences:
+  directions: [ software ] # 求职方向，第一个是主方向；金融、市场等方向的示例见 candidate/templates/
+  company_priority: [ foreign_or_global_team, large_low_overtime, credible_startup ]
+  role_families:
+    - applied AI / LLM application engineering
+    - distributed backend engineering
+  hard_exclusions:
+    - sales / non-technical roles
+    - internships / data annotation
+  soft_exclusions: 996 明确的公司
+
+resume_routing: # 简历 PDF（仓库内相对路径）；只有一份就两项写同一个文件
+  english_pdf: candidate/Alex-Example-English-Resume.pdf
+  chinese_pdf: candidate/Alex-Example-Chinese-Resume.pdf
+  rule: 英文帖子或外企 → 英文；中文帖子 → 中文；不确定时两份都附
+
+standard_answers: # ATS 常见问题的固定回答
+  why_leaving: 希望进入更专注 AI 应用的团队
+  biggest_strength: 学得快，交付稳
+  management_experience: no
+  referral_source_default: Company website / LinkedIn
+  relatives_at_company: false
+  previously_applied_default: false
+  disability_veteran_etc: prefer_not_to_answer
+  background_check_ok: true
+  languages: [ 中文（母语）, English（工作语言） ]
+
+alumni_networks: # 英文校名 / 前公司，判断校友与前同事时用
+  - Example University (MSc CS, 2020-2022)
+  - Sample University (BEng CS, 2016-2020)
+
+current_work:
+  company: 示例科技
+  title: Software Engineer
+  start: 2023-07
+  focus: AI 应用后端与服务集成
+  responsibilities:
+    - area: 后端与集成
+      work:
+        - 负责对话服务的接口设计与实现。
+  ownership_boundaries:
+    - 公司项目与个人项目分开陈述；职责表没有确认的新指标不新增。
+
+career_highlights:
+  entries:
+    - company: Contoso
+      dates: 2020-06 至 2020-09
+      role: Software Development Intern
+      evidence:
+        - 后端服务迁移与性能优化。
+
+personal_projects:
+  entries:
+    - name: Photo Book
+      ownership: 独立个人项目
+      evidence: 本地照片书生成器，Agent 编排选图、分组与排版。
+      relevance: [ Agent 工作流, 全栈 ]
+      url: https://github.com/alex-example/photo-book
+
+education:
+  - school: 示例大学
+    degree: 软件工程工学学士
+    dates: 2016-09 至 2020-06
+  - school: Example University
+    degree: Master of Science in Computer Science
+    dates: 2020-09 至 2022-06
+
+experience_summary:
+  outreach_wording: 约3年软件研发经历（含实习） # 中文信里的年限说法
+  outreach_wording_en: around three years of software engineering experience including internships
+  calculation: 按简历任职年月估算
+  rules:
+    - 不把教育时段或个人项目计入工龄。
+
+positioning: # 所有材料、申请信、自我介绍按这里讲
+  headline: 做 AI 应用的后端工程师
+  lead_with: AI 应用后端 + 真实上线的个人项目
+  project_priority: # 项目按顺序优先引用
+    - name: Photo Book
+      why: 模型做选择、几何做约束
+      use_for: 讲 AI 与确定性代码分工时用
+
+# 对外短消息和判断模型里用到的本人说法。缺哪一项，消息里就不写那一句，不会编。
+# 这一节不给匹配模型看（bin/match.mjs 和 identity 一样去掉）。
+outreach:
+  education: 示例大学计算机本科、Example University 计算机硕士 # 「我是某某，」后面的学历
+  current_role: AI 应用后端与服务集成 # 「现职做……」
+  extra: 另有 Contoso 后端实习经历 # 平台私信里接在现职后面的一句
+  intro: 我做AI应用开发 # 脉脉加好友附言（50 字以内）的自我介绍；不写就不发加好友附言
+  project_line: 独立做过照片书Agent # 附言里的项目一句
+  project_line_short: 做过照片书Agent # 字数紧时用的短写法
+  # 英文帖子的私信用英文写（跟着对方帖子的语言）：姓名用 identity.name_en，年限用 experience_summary.outreach_wording_en，
+  # 现职默认用 current_work.title；下面三句可选，不写就不提。
+  education_en: MSc Computer Science, Example University # 「I'm Alex Example, …」后面的学历
+  current_role_en: AI application backends and service integration # 「I currently work on …」
+  extra_en: I also interned on backend services at Contoso # 接在现职后面的一句
+  school_names: # 判断对方是不是校友时认的学校叫法，一所一行
+    - 示例大学 / Sample University
+    - Example University
+  language_evidence: 中文母语，英语可作为工作语言 # 判断语言要求时引用的那条证据

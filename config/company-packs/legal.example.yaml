@@ -1,0 +1,191 @@
+# 法律公司包（起步清单）：内资律所、外所在华办公室、公司法务和合规岗（大厂、金融机构）。给「法律」方向用。
+#
+# 这是起步清单，不会自动被扫描：把你想要的那几段复制到 config/companies.yaml（你自己的公司清单，本机文件），
+# 下一轮 node bin/discover.mjs 才会去读。写法和 config/companies.yaml 完全一样，多出来的三项：
+#   group    分组：cn_law_firm 内资所 · intl_law_firm 外所 · in_house 公司法务和合规（大厂、外资银行等）
+#   presets  这家公司招哪些方向的人：legal 法律
+#   why      为什么在包里、核对时读到了什么
+#
+# 每一家都在 2026-10-02 用现有适配器只读核过（沙盒、演示数据，先看 robots.txt 放行再读）。
+# 数字的口径：国内门户社招、校招、实习三类都读，只数落在北京、上海、深圳、广州、杭州、香港六个城市里的岗位；
+# Workday 上的外所和外资机构数的是全球，括号里是香港、北京、上海的。平时扫描按你的阶段和城市来，数目会不一样。
+# 大厂一家的法务、合规岗就比任何一家律所多，所以公司法务和律所并列。大厂没有写 queries：按你的法律细分自动换
+# 搜索词（法务、律师、法律顾问、合规……，lib/directions.mjs），核对时用的就是这一串，每个词翻两页。
+# 金融机构在北森上的用 keywords（北森的关键词是模糊匹配，会带出不相干的岗位，判断时再按标题筛）。
+# 读不到、或者还没有适配器的机构列在文件最后，不在包里。
+
+# ── 内资律所 ──────────────────────────────────────────────────────────────
+- name: 金杜
+  hq: 北京
+  group: cn_law_firm
+  ats_type: beisen
+  origin: https://kwmcareer.zhiye.com
+  portal_id: 472136d7-a621-4220-8652-18b96e59f40a
+  careers_url: https://kwmcareer.zhiye.com/social/jobs
+  presets: [legal]
+  why: 红圈所；北森门户（官网没有链接，门户在 kwmcareer.zhiye.com）。2026-10-02 读到社招 50、校招 1、实习 21
+- name: 竞天公诚
+  hq: 北京
+  group: cn_law_firm
+  ats_type: beisen
+  origin: https://jingtian.zhiye.com
+  portal_id: d997d038-092c-4e4a-ad02-1668ffb91692
+  careers_url: https://jingtian.zhiye.com/
+  presets: [legal]
+  why: 红圈所，资本市场见长；北森。2026-10-02 读到社招 18、实习 3
+- name: 汉坤
+  hq: 北京
+  group: cn_law_firm
+  ats_type: beisen
+  origin: https://hankun.zhiye.com
+  portal_id: dcd5d56e-2370-47fc-bffc-d82e272dacab
+  careers_url: https://hankun.zhiye.com/social/jobs
+  presets: [legal]
+  why: 红圈所，投融资、TMT 见长；北森。2026-10-02 读到社招 29、实习 10（香港 5）
+
+# ── 外所 ─────────────────────────────────────────────────────────────────
+- name: Linklaters
+  hq: London
+  group: intl_law_firm
+  ats_type: workday
+  origin: https://linklaters.wd3.myworkdayjobs.com
+  tenant: linklaters
+  site: Linklaters
+  careers_url: https://linklaters.wd3.myworkdayjobs.com/Linklaters
+  presets: [legal]
+  why: 英国魔术圈所，香港、北京、上海有办公室；Workday，robots 放行这个站。2026-10-02 读到全球 192（香港 7、北京 1、上海 1）
+- name: Freshfields
+  hq: London
+  group: intl_law_firm
+  ats_type: workday
+  origin: https://freshfields.wd3.myworkdayjobs.com
+  tenant: freshfields
+  site: FBD_101
+  careers_url: https://freshfields.wd3.myworkdayjobs.com/FBD_101
+  presets: [legal]
+  why: 英国魔术圈所；Workday，robots 放行这个站。2026-10-02 读到全球 179（香港 5）
+- name: Herbert Smith Freehills Kramer
+  hq: London
+  group: intl_law_firm
+  ats_type: workday
+  origin: https://herbertsmithfreehills.wd3.myworkdayjobs.com
+  tenant: herbertsmithfreehills
+  site: External
+  careers_url: https://herbertsmithfreehills.wd3.myworkdayjobs.com/External
+  presets: [legal]
+  why: 英美合并所，大中华区有北京、上海、香港办公室；前台是 Phenom，背后是 Workday，robots 放行这个站。2026-10-02 读到全球 126（香港 2、北京 1、上海 2）
+
+# ── 公司法务和合规 ─────────────────────────────────────────────────────────
+- name: 字节跳动
+  hq: 北京
+  group: in_house
+  ats_type: larkhire
+  board: bytedance
+  origin: https://jobs.bytedance.com
+  position_path: /experienced/position
+  max_pages: 2
+  careers_url: https://jobs.bytedance.com/experienced/position
+  presets: [legal]
+  why: 大厂里法务、合规岗最多；飞书招聘（larkhire），按法律的搜索词，2026-10-02 读到社招 186（北京 124、上海 47）
+- name: 阿里巴巴集团
+  hq: 杭州
+  group: in_house
+  ats_type: alitalent
+  board: alibaba
+  origin: https://talent.alibaba.com
+  detail_origin: https://talent-holding.alibaba.com
+  max_pages: 2
+  careers_url: https://talent-holding.alibaba.com/off-campus/position-list?lang=zh
+  presets: [legal]
+  why: 大厂；阿里系招聘站（alitalent），按法律的搜索词，2026-10-02 读到社招 36
+- name: 腾讯
+  hq: 深圳
+  group: in_house
+  ats_type: tencent
+  board: tencent
+  origin: https://careers.tencent.com
+  max_pages: 2
+  careers_url: https://careers.tencent.com/search.html
+  presets: [legal]
+  why: 大厂；腾讯招聘（tencent），按法律的搜索词，2026-10-02 读到社招 48、校招 13、实习 15
+- name: 网易
+  hq: 杭州
+  group: in_house
+  ats_type: netease
+  board: netease
+  origin: https://hr.163.com
+  max_pages: 2
+  careers_url: https://hr.163.com/job-list.html
+  presets: [legal]
+  why: 大厂；网易招聘（netease），按法律的搜索词，2026-10-02 读到 98 个（合规岗占多数）
+- name: 中金公司
+  hq: 北京
+  group: in_house
+  ats_type: beisen
+  origin: https://cicc.zhiye.com
+  portal_id: 8e5a323a-a6e8-4a37-9ff2-018191167d45
+  keywords: [合规, 法务, 法律]
+  careers_url: https://cicc.zhiye.com/social/jobs
+  presets: [legal]
+  why: 头部券商的合规、法律岗；北森，按关键词合规、法务、法律读。2026-10-02 读到社招 48、校招 30、实习 10（模糊匹配，标题要再筛）
+- name: 中国人寿
+  hq: 北京
+  group: in_house
+  ats_type: beisen
+  origin: https://chinalife.zhiye.com
+  portal_id: fe9a4897-6c7b-4ebd-904b-da4f88b13020
+  keywords: [合规, 法务, 法律]
+  careers_url: https://chinalife.zhiye.com/social/jobs
+  presets: [legal]
+  why: 保险集团的法律合规岗；北森，按关键词合规、法务、法律读。2026-10-02 读到社招 100、校招 46、实习 1（模糊匹配，标题要再筛）
+- name: 泰康
+  hq: 北京
+  group: in_house
+  ats_type: beisen
+  origin: https://jobtaikang.zhiye.com
+  portal_id: 9f148551-4e1b-42c3-bb17-f09ad9f30453
+  keywords: [合规, 法务, 法律]
+  careers_url: https://jobtaikang.zhiye.com/social/jobs
+  presets: [legal]
+  why: 保险集团的合规管理岗；北森，按关键词合规、法务、法律读。2026-10-02 读到社招 78、校招 56、实习 8（模糊匹配，标题要再筛）
+- name: 德意志银行
+  hq: Frankfurt
+  group: in_house
+  ats_type: workday
+  origin: https://db.wd3.myworkdayjobs.com
+  tenant: db
+  site: DBWebsite
+  query: Legal
+  careers_url: https://db.wd3.myworkdayjobs.com/DBWebsite
+  presets: [legal]
+  why: 外资银行的法律、合规岗；Workday，robots 放行这个站，按 Legal 搜（模糊）。2026-10-02 读到全球 181（香港 7、上海 2）
+- name: BlackRock
+  hq: New York
+  group: in_house
+  ats_type: workday
+  origin: https://blackrock.wd1.myworkdayjobs.com
+  tenant: blackrock
+  site: BlackRock_Professional
+  query: Legal
+  careers_url: https://blackrock.wd1.myworkdayjobs.com/BlackRock_Professional
+  presets: [legal]
+  why: 资管的法律、合规岗；Workday 社招站（robots 放行；校招站被禁，不读），按 Legal 搜（模糊）。2026-10-02 读到全球 66（香港 2、上海 1）
+
+# ── 没收进来的（不在包里）────────────────────────────────────────────────────
+# robots.txt 禁止（能读也不读）：
+#   通商 www.tongshang.com、大成 www.dacheng.com：整站禁止
+#   花旗 Workday（citi.wd5 站点 2）：robots.txt 禁了这个站
+#   BlackRock 校招 Workday（BlackRock_Early_Careers_Program）：robots.txt 禁了这个站
+# 只放入口（自己打开看，不自动读）：
+#   海问、天元、世辉，Slaughter and May、Davis Polk、Sullivan & Cromwell、Paul Weiss：投递不走招聘系统，没有可读的列表
+#   Skadden、Kirkland & Ellis、Simpson Thacher、Cleary Gottlieb：大中华区当天没有岗位，或者招聘系统没有适配器
+#   金杜香港毕业生项目（AllHires）：一年开一次
+#   汇丰（Eightfold 接口 403）、中金官网（挑战页）、华泰证券、招商银行（接口加密、签名）
+# 要新写适配器：
+#   君合、中伦、环球、国浩、锦天城（自建列表能读，但投递不走招聘系统；锦天城要守 Crawl-delay 10）
+#   Clifford Chance、A&O Shearman（站点地图 + 岗位页结构化数据）· Baker McKenzie（Avature）· Latham & Watkins（iCIMS）
+#   金杜香港律师岗（Manatal）· 渣打（SuccessFactors）
+# 当天 0 个：
+#   方达 fangdalaw.zhiye.com：北森接口正常，2026-10-02 三类都是 0 个，有岗位了再加
+# 没写进来：
+#   Herbert Smith Freehills Kramer 的 Kewei_Careers_Site：2026-10-02 只有 2 个岗位

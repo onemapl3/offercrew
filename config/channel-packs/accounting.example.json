@@ -1,0 +1,395 @@
+{
+  "preset": "accounting",
+  "label": "会计（审计、公司会计、财务分析、税务、内审）",
+  "note": "渠道包：真人招聘帖从哪里读、默认开不开、按这个方向用什么词。V2EX、电鸭、阮一峰周刊、Hacker News 是技术社区，这个方向的招聘帖很少，默认关。要登录的来源默认关（要先在专用 Chrome 里登录，再到 config/human-source-policy.json 里打开）。kind 为 manual 的是搜好的入口：系统不去这些网站搜，只按你的细分和目标城市填好链接（lib/channel-entries.mjs），你自己打开看；BOSS 直聘的聊天消息另有一个开关，默认关着，打开后每小时只读看一眼聊天列表，没读的对话不点开。copy_keywords 为 true 的地址不能带搜索词，搜索词写在旁边给你复制；needs_international 为 true 的要能访问国际互联网。track_keywords 是各细分的搜索词，没选细分时用每个来源自己的 keywords。",
+  "track_keywords": {
+    "zh": {
+      "audit": [
+        "审计",
+        "审计助理",
+        "审计员"
+      ],
+      "accounting": [
+        "会计",
+        "总账会计",
+        "成本会计"
+      ],
+      "fpa": [
+        "财务分析",
+        "FP&A",
+        "经营分析"
+      ],
+      "tax": [
+        "税务",
+        "税务专员",
+        "税务顾问"
+      ],
+      "internal_audit": [
+        "内审",
+        "内控",
+        "内部审计"
+      ]
+    },
+    "en": {
+      "audit": [
+        "Audit Associate",
+        "Assurance"
+      ],
+      "accounting": [
+        "Accountant",
+        "General Ledger"
+      ],
+      "fpa": [
+        "FP&A",
+        "Financial Analyst"
+      ],
+      "tax": [
+        "Tax Consultant",
+        "Tax"
+      ],
+      "internal_audit": [
+        "Internal Audit",
+        "Internal Control"
+      ]
+    }
+  },
+  "sources": {
+    "v2ex": {
+      "name": "V2EX 酷工作",
+      "kind": "public",
+      "enabled": false,
+      "requires_login": false,
+      "keywords_use": "filter",
+      "keywords": [
+        "审计",
+        "会计",
+        "税务",
+        "财务分析",
+        "内审",
+        "财务",
+        "audit",
+        "accountant",
+        "tax",
+        "FP&A"
+      ],
+      "why": "技术社区，这个方向的招聘帖很少。默认关。"
+    },
+    "eleduck": {
+      "name": "电鸭",
+      "kind": "public",
+      "enabled": false,
+      "requires_login": false,
+      "keywords_use": "filter",
+      "keywords": [
+        "审计",
+        "会计",
+        "税务",
+        "财务分析",
+        "内审",
+        "财务",
+        "audit",
+        "accountant",
+        "tax",
+        "FP&A"
+      ],
+      "why": "技术社区，这个方向的招聘帖很少。默认关。"
+    },
+    "ruanyf": {
+      "name": "阮一峰周刊 · 谁在招人",
+      "kind": "public",
+      "enabled": false,
+      "requires_login": false,
+      "keywords_use": "filter",
+      "keywords": [
+        "审计",
+        "会计",
+        "税务",
+        "财务分析",
+        "内审",
+        "财务",
+        "audit",
+        "accountant",
+        "tax",
+        "FP&A"
+      ],
+      "why": "技术社区，这个方向的招聘帖很少。默认关。"
+    },
+    "hn": {
+      "name": "Hacker News · Who is hiring",
+      "kind": "public",
+      "enabled": false,
+      "requires_login": false,
+      "keywords_use": "filter",
+      "keywords": [
+        "审计",
+        "会计",
+        "税务",
+        "财务分析",
+        "内审",
+        "财务",
+        "audit",
+        "accountant",
+        "tax",
+        "FP&A"
+      ],
+      "why": "技术社区，这个方向的招聘帖很少。默认关。"
+    },
+    "boss": {
+      "name": "BOSS 直聘",
+      "kind": "manual",
+      "enabled": false,
+      "requires_login": true,
+      "automation": "none",
+      "keywords_use": "search",
+      "keywords": [
+        "审计",
+        "审计助理",
+        "会计"
+      ],
+      "open_url": "https://www.zhipin.com/web/geek/jobs?query={keyword}&city={city}",
+      "why": "BOSS 直聘的用户协议禁止用自动化程序或外挂访问、操作平台。这里只放按方向搜好的入口（open_url），你自己打开、自己看、自己聊，系统不自动搜、不打招呼。聊天消息另有一个开关（设置 → 发现与匹配），默认关着，打开后每小时只读看一眼聊天列表，没读的对话不点开。默认关。"
+    },
+    "maimai": {
+      "name": "脉脉招聘帖",
+      "kind": "login",
+      "enabled": false,
+      "requires_login": true,
+      "keywords_use": "search",
+      "keywords": [
+        "招聘 审计",
+        "内推 会计",
+        "招聘 税务"
+      ],
+      "why": "要登录：脉脉的招聘帖只有登录后才看得到，要先在专用 Chrome 里登录；默认关。脉脉消息同步暂不可用，请打开脉脉聊天手动查看和回复。"
+    },
+    "linkedin": {
+      "name": "LinkedIn 帖子",
+      "kind": "login",
+      "enabled": false,
+      "requires_login": true,
+      "keywords_use": "search",
+      "keywords": [
+        "招聘 审计",
+        "hiring audit associate",
+        "hiring accountant"
+      ],
+      "why": "要登录：LinkedIn 的 robots.txt 不许程序访问、条款禁止抓取，只能在你登录好的专用 Chrome 里看；默认关。"
+    },
+    "xiaohongshu": {
+      "name": "小红书招聘帖",
+      "kind": "login",
+      "enabled": false,
+      "requires_login": true,
+      "keywords_use": "search",
+      "keywords": [
+        "内推 审计",
+        "招聘 会计"
+      ],
+      "why": "要登录：小红书的内推帖要登录才能搜，要先在专用 Chrome 里登录；默认关。"
+    },
+    "liepin": {
+      "name": "猎聘",
+      "kind": "manual",
+      "enabled": true,
+      "requires_login": false,
+      "automation": "none",
+      "keywords_use": "search",
+      "keywords": [
+        "审计",
+        "审计助理",
+        "会计",
+        "税务",
+        "财务分析",
+        "内审"
+      ],
+      "open_url": "https://www.liepin.com/zhaopin/?key={keyword}&dq={city}",
+      "why": "猎聘的 robots.txt 不许程序读带问号的地址（搜索页就是），用户协议正文没读到。这里只放搜好的入口，你自己打开看，系统不自动读。不用登录也能看职位详情。"
+    },
+    "zhaopin": {
+      "name": "智联招聘",
+      "kind": "manual",
+      "enabled": true,
+      "requires_login": false,
+      "automation": "none",
+      "keywords_use": "search",
+      "keywords": [
+        "审计",
+        "审计助理",
+        "会计",
+        "税务",
+        "财务分析",
+        "内审"
+      ],
+      "open_url": "https://www.zhaopin.com/",
+      "copy_keywords": true,
+      "why": "搜索写法待核：先放首页，搜索词写在旁边，你复制过去搜。从本机打开时先出现一个勾选验证页。这里只放入口，系统不自动读。"
+    },
+    "51job": {
+      "name": "前程无忧",
+      "kind": "manual",
+      "enabled": true,
+      "requires_login": false,
+      "automation": "none",
+      "keywords_use": "search",
+      "keywords": [
+        "审计",
+        "审计助理",
+        "会计",
+        "税务",
+        "财务分析",
+        "内审"
+      ],
+      "open_url": "https://we.51job.com/pc/search?keyword={keyword}&jobArea={city}",
+      "why": "前程无忧的用户协议和法律声明禁止用机器人、蜘蛛等程序抓取。这里只放搜好的入口，你自己打开看，系统不自动读。不用登录就能搜。"
+    },
+    "shixiseng": {
+      "name": "实习僧",
+      "kind": "manual",
+      "enabled": true,
+      "requires_login": false,
+      "automation": "none",
+      "keywords_use": "search",
+      "keywords": [
+        "审计",
+        "审计助理",
+        "会计",
+        "税务",
+        "财务分析",
+        "内审"
+      ],
+      "open_url": "https://www.shixiseng.com/interns?keyword={keyword}&city={city}",
+      "why": "实习僧的用户协议禁止机器人、脚本自动访问和爬虫抓取。这里只放搜好的入口，你自己打开看，系统不自动读。不用登录就能看实习列表和详情。"
+    },
+    "iguopin": {
+      "name": "国聘",
+      "kind": "manual",
+      "enabled": true,
+      "requires_login": false,
+      "automation": "none",
+      "keywords_use": "search",
+      "keywords": [
+        "审计",
+        "审计助理",
+        "会计",
+        "税务",
+        "财务分析",
+        "内审"
+      ],
+      "open_url": "https://www.iguopin.com/job/list?keyword={keyword}&district={city}",
+      "why": "国聘的职位接口要前端算签名，用户协议正文没读到。这里只放搜好的入口，你自己打开看，系统不自动读。关键词和城市一起生效（2026-10-03 打开结果页核过）；城市按对照表填，表里没有的城市不带。"
+    },
+    "linkedin_jobs": {
+      "name": "LinkedIn 职位搜索",
+      "kind": "manual",
+      "enabled": true,
+      "requires_login": false,
+      "automation": "none",
+      "keywords_use": "search",
+      "keywords": [
+        "Audit Associate",
+        "Accountant",
+        "Tax",
+        "FP&A",
+        "Internal Audit"
+      ],
+      "open_url": "https://www.linkedin.com/jobs/search?keywords={keyword}&geoId={city}",
+      "lang": "en",
+      "needs_international": true,
+      "why": "LinkedIn 的用户协议禁止抓取和用机器人访问。这里只放搜好的职位搜索链接，你自己打开看，系统不自动读。需要能访问国际互联网：从中国大陆网络直接打开会被拒绝。不用登录也能看职位。"
+    },
+    "acca_careers": {
+      "name": "ACCA Careers",
+      "kind": "manual",
+      "enabled": true,
+      "requires_login": false,
+      "automation": "none",
+      "keywords_use": "search",
+      "keywords": [
+        "Audit Associate",
+        "Accountant",
+        "Tax",
+        "FP&A",
+        "Internal Audit"
+      ],
+      "open_url": "https://jobs.accaglobal.com/searchjobs/?Keywords={keyword}&LocationId={city}",
+      "lang": "en",
+      "why": "ACCA 官方的招聘板，条款写明网站只限个人非商业使用。这里只放搜好的入口，你自己打开看。不用登录。地区用它自己的 LocationId（2026-10-03 核过：关键词加城市的结果页写「jobs in Shanghai」）。"
+    },
+    "chinaacc_jobs": {
+      "name": "正保会计网校 · 招聘信息",
+      "kind": "manual",
+      "enabled": true,
+      "requires_login": false,
+      "automation": "none",
+      "keywords_use": "search",
+      "keywords": [
+        "审计",
+        "审计助理",
+        "会计",
+        "税务",
+        "财务分析",
+        "内审"
+      ],
+      "open_url": "https://www.chinaacc.com/jiuye/qiuzhi/",
+      "copy_keywords": true,
+      "why": "多是会计师事务所的招聘启事，每月几条，不用登录。栏目不能按关键词搜，入口打开栏目页。没找到用户协议。"
+    },
+    "shcpa": {
+      "name": "上海注协 · 招聘信息",
+      "kind": "manual",
+      "enabled": true,
+      "requires_login": false,
+      "automation": "none",
+      "keywords_use": "search",
+      "keywords": [
+        "审计",
+        "审计助理",
+        "会计",
+        "税务",
+        "财务分析",
+        "内审"
+      ],
+      "copy_keywords": true,
+      "open_url": "https://www.shcpa.org.cn/recruit/getRecruitQueryList.do",
+      "why": "上海市注册会计师协会的招聘信息栏目，多是上海的会计师事务所发的岗位，不用登录。按关键词搜不了，打开列表页后自己找。2026-10-02 核过：robots.txt 不存在，最新一条 09-28，9 月有十几条。"
+    },
+    "bicpa": {
+      "name": "北京注协 · 招聘动态",
+      "kind": "manual",
+      "enabled": true,
+      "requires_login": false,
+      "automation": "none",
+      "keywords_use": "search",
+      "keywords": [
+        "审计",
+        "审计助理",
+        "会计",
+        "税务",
+        "财务分析",
+        "内审"
+      ],
+      "copy_keywords": true,
+      "open_url": "https://www.bicpa.org.cn/p1/zpdt.html",
+      "why": "北京注册会计师协会的招聘动态栏目，事务所发的招聘启事，不用登录，量不大。按关键词搜不了，打开列表页后自己找。2026-10-02 核过：robots.txt 没有禁止，最新一条 09-10。"
+    },
+    "gdicpa": {
+      "name": "广东注协 · 行业网络招聘平台",
+      "kind": "manual",
+      "enabled": true,
+      "requires_login": false,
+      "automation": "none",
+      "keywords_use": "search",
+      "keywords": [
+        "审计",
+        "审计助理",
+        "会计",
+        "税务",
+        "财务分析",
+        "内审"
+      ],
+      "copy_keywords": true,
+      "open_url": "https://www.gdicpa.org.cn/gzfw/zppt",
+      "why": "广东省注册会计师协会办的行业招聘平台，接了 200 多家事务所，有校招、实习和社招，也转四大的公告；不用登录。按关键词搜不了，打开平台页后自己找。2026-10-02 核过：robots.txt 不存在，资讯最新一条 09-07。"
+    }
+  }
+}

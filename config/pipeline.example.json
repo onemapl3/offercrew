@@ -1,0 +1,62 @@
+{
+  "note": "发现、判断、匹配与投递的节奏和范围。复制成 config/pipeline.json（本机文件，不进仓库）再改，或在工作台设置页里改（第一次保存就会建出本机文件）。",
+  "computer_use": {
+    "enabled": true,
+    "max_per_hour": 2,
+    "allow_hosts": [],
+    "never_hosts": [],
+    "note": "允许 Codex 电脑操作（docs/computer-use.md）代你在浏览器里预填的门户域名；空 = 不用电脑操作。"
+  },
+  "match_limit": 40,
+  "match_per_company": 6,
+  "judge_limit": 500,
+  "cycle_budget": {
+    "full_minutes": 45,
+    "light_minutes": 20,
+    "tail_slot_seconds": 90,
+    "guard_margin_minutes": 10,
+    "note": "整轮按墙钟预算（lib/cycle-budget.mjs）。发现、判断、匹配、找联系人等阶段只能用到「截止 − 尾段预留」，用完就跳过、留到下一轮；看板、宿主任务、进度、清单、飞书、指标每段预留 tail_slot_seconds，必跑。scheduled.mjs 的守卫 = 预算 + guard_margin_minutes，只算醒着的时间。judge_limit 是每轮 Jev 判断的条数上限（按优先级），其余留到下一轮。"
+  },
+  "discovery_hours": [
+    9,
+    13,
+    18
+  ],
+  "wide_discovery_hours": [
+    9
+  ],
+  "human_discovery_daily": false,
+  "human_discovery_daily_note": "每天的真人帖扫描（完整周期里的 discover-human / discover-human-browser）。公开来源（V2EX、电鸭、HN……）直接联网读，不要浏览器；要登录的来源（BOSS、脉脉、LinkedIn、小红书）要在浏览器里登录好。引导里开了任何一个来源，就把这一项打开（config/pipeline.json）。",
+  "boss_chat_watch": false,
+  "boss_chat_watch_note": "Watcher 每小时（09:00–21:00）只读一次 BOSS 直聘聊天列表：谁发来、最后一句、未读数；没读的对话不点开、不回复、不打字。招聘方主动找你、雷达没扫到的：没读时一个对话一封信；你读过之后才点开那个对话，看岗位卡片和岗位页（只读），交给 Judge，合适的进岗位池（lib/boss-inbound.mjs）。BOSS 的用户协议禁止自动化访问，默认关，要你自己打开。对得上岗位的进收件箱「对方回复了」，对不上的合成一封信（lib/boss-inbox.mjs）。",
+  "maimai_chat_watch": false,
+  "maimai_chat_watch_note": "Watcher 每两小时（09:00–21:00，整点后 35 分钟，和 BOSS 错开）只读一次脉脉消息列表：谁发来、最后一句、未读数；没读的对话不点开、不回复、不打字。碰到验证码或登录墙就停，在收件箱报一封信。《脉脉服务协议》第五条第（6）项不允许用程序读取平台信息，默认关，要你自己打开。对得上岗位的进收件箱「对方在脉脉上回了你」，对不上的合成一封信（lib/maimai-inbox.mjs）。",
+  "application_preparation_batch": 12,
+  "auto_submit": false,
+  "auto_submit_note": "false（默认）= 只预填：系统在浏览器里填好认得出的项，列出还空着的必填项，停在提交前，你在页面上检查后自己提交。true = 你在收件箱终审确认后由系统点提交。",
+  "company_briefs": {
+    "per_cycle": 5,
+    "max_age_days": 30,
+    "prep_per_cycle": 5,
+    "note": "Watch 的公司调研与「怎么准备」（lib/company-brief.mjs、docs/interview-dossiers.md）。每轮周期给新线索 / 待批准里推荐或待核的公司排调研，同时开着的最多 per_cycle 家，岗位多的公司先；调研满 max_age_days 天重查。走到递出以后的线索自动写「怎么准备」，同时最多 prep_per_cycle 条。0 = 不自动排，页面上的「调研这家公司」「生成怎么准备」照常能用。"
+  },
+  "city_quota": {},
+  "city_quota_note": "城市名额：{\"城市\": 比例}，每轮匹配先给这些城市留座（lib/city-quota.mjs）；城市名与 candidate/facts.yaml 的 location.target_cities 一致。",
+  "city_sprint": {
+    "enabled": false,
+    "only": [],
+    "since": null,
+    "reason": "城市冲刺：只推荐、只投 only 里的城市（远程写「远程」），其他城市留在 Backlog（lib/city-sprint.mjs）。"
+  },
+  "apply_freeze": {
+    "enabled": false,
+    "since": null,
+    "reason": "暂停一切真实投递（自动投递 / 门户提交）时在这里打开；发现、匹配、筛选照常"
+  },
+  "discovery": {
+    "focus_only": true,
+    "excluded_companies": [],
+    "browser_interval_hours": 4
+  },
+  "wide_discovery_note": "宽扫描（config/companies.archive.yaml 里的公司）原始岗位多、合格的少，每天只在 wide_discovery_hours 跑一次；日常几轮只扫 config/companies.yaml 的重点源。"
+}

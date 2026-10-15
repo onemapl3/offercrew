@@ -1,0 +1,368 @@
+# 科技公司包（起步清单）：国内大厂、大模型公司、外企在华研发、海外远程。
+#
+# 这是起步清单，不会自动被扫描：把你想要的那几段复制到 config/companies.yaml（你自己的公司清单，本机文件），
+# 下一轮 node bin/discover.mjs 才会去读。写法和 config/companies.yaml 完全一样，多出来的三项：
+#   group    分组：cn_big_tech 国内大厂 · ai_lab 大模型公司 · foreign_rnd 外企在华研发 · overseas_remote 海外远程
+#   presets  这家公司招哪些方向的人：engineering 工程 · product 产品 · data 数据 · design 设计 · operations 运营
+#            （同一批科技公司也招产品、数据、设计、运营；国内门户按你的求职方向自动换搜索词，lib/ats/cn.mjs）
+#   why      为什么在包里、核对时读到了什么
+#
+# 每一家都在 2026-09-29 用现有适配器实际读到过岗位：node bin/discover.mjs --company <名字> --dry-run（只读）。
+# 国内门户核对时只搜了一个词、翻了一页，岗位数是那一次读到的、落在目标城市（北京、上海、杭州、深圳）里的；
+# 平时扫描按你的方向和城市来，数目会不一样。Workday 上的外企用 query: China 只看中国的岗位。
+# 读不到、或者还没有适配器的公司列在文件最后，不在包里。
+
+# ── 国内大厂 ─────────────────────────────────────────────────────────────
+- name: 字节跳动
+  hq: 北京
+  group: cn_big_tech
+  ats_type: larkhire
+  board: bytedance
+  origin: https://jobs.bytedance.com
+  position_path: /experienced/position
+  max_pages: 2
+  careers_url: https://jobs.bytedance.com/experienced/position
+  presets: [engineering, product, data, design, operations]
+  why: 国内大厂；飞书招聘（larkhire），核对时搜「后端」一页读到 49 个
+- name: 阿里巴巴集团
+  hq: 杭州
+  group: cn_big_tech
+  ats_type: alitalent
+  board: alibaba
+  origin: https://talent.alibaba.com
+  detail_origin: https://talent-holding.alibaba.com
+  max_pages: 2
+  careers_url: https://talent-holding.alibaba.com/off-campus/position-list?lang=zh
+  presets: [engineering, product, data, design, operations]
+  why: 国内大厂；阿里系招聘站（alitalent，包括阿里云、淘天、千问等），核对时搜「后端」一页读到 13 个
+- name: 腾讯
+  hq: 深圳
+  group: cn_big_tech
+  ats_type: tencent
+  board: tencent
+  origin: https://careers.tencent.com
+  max_pages: 2
+  careers_url: https://careers.tencent.com/search.html
+  presets: [engineering, product, data, design, operations]
+  why: 国内大厂；腾讯招聘（tencent），核对时搜「后端」一页读到 41 个
+- name: 网易
+  hq: 杭州
+  group: cn_big_tech
+  ats_type: netease
+  board: netease
+  origin: https://hr.163.com
+  max_pages: 2
+  careers_url: https://hr.163.com/job-list.html
+  presets: [engineering, product, data, design, operations]
+  why: 国内大厂；网易招聘（netease），核对时搜「后端」一页读到 28 个
+- name: 得物
+  hq: 上海
+  group: cn_big_tech
+  ats_type: larkhire
+  board: poizon
+  origin: https://poizon.jobs.feishu.cn
+  position_path: /index/position
+  max_pages: 2
+  careers_url: https://poizon.jobs.feishu.cn/index
+  presets: [engineering, product, data, design, operations]
+  why: 电商 App；飞书招聘（larkhire），核对时一页读到 47 个（上海、杭州为主）
+- name: 蔚来
+  hq: 上海
+  group: cn_big_tech
+  ats_type: larkhire
+  board: nio
+  origin: https://nio.jobs.feishu.cn
+  position_path: /index/position
+  max_pages: 2
+  careers_url: https://nio.jobs.feishu.cn/index
+  presets: [engineering, product, data, design, operations]
+  why: 智能电动车，软件和大模型团队不小；飞书招聘（larkhire），核对时一页读到 39 个
+- name: 大华
+  hq: 杭州
+  group: cn_big_tech
+  ats_type: beisen
+  board: dahua
+  origin: https://dahua.zhiye.com
+  portal_id: 455a866e-2e06-4ff1-8c1f-8dd03749a267
+  careers_url: https://dahua.zhiye.com/social/jobs
+  presets: [engineering, product]
+  why: 安防和物联网；北森（beisen），核对时读到 29 个
+- name: 涂鸦智能
+  hq: 杭州
+  group: cn_big_tech
+  ats_type: moka
+  board: tuya
+  org_id: tuya
+  site_id: 3236
+  site_path: apply
+  careers_url: https://app.mokahr.com/apply/tuya/3236
+  presets: [engineering, product, design]
+  why: 物联网云平台；Moka，核对时读到 56 个（杭州、深圳为主）
+
+# ── 大模型公司 ───────────────────────────────────────────────────────────
+- name: 月之暗面
+  hq: 北京
+  group: ai_lab
+  ats_type: moka
+  board: moonshot
+  org_id: moonshot
+  site_id: 148506
+  site_path: apply
+  careers_url: https://careers.kimi.com/social
+  presets: [engineering, product, data, design, operations]
+  why: Kimi；社招站 careers.kimi.com 背后是 Moka，核对时读到 40 个
+- name: DeepSeek
+  hq: 杭州
+  group: ai_lab
+  ats_type: moka
+  board: high-flyer
+  org_id: high-flyer
+  site_id: 140576
+  site_path: social-recruitment
+  careers_url: https://app.mokahr.com/social-recruitment/high-flyer/140576
+  presets: [engineering, data]
+  why: 深度求索；Moka 社招站，核对时读到 37 个（杭州、北京）
+- name: MiniMax
+  hq: 上海
+  group: ai_lab
+  ats_type: larkhire
+  board: minimax
+  origin: https://vrfi1sk8a0.jobs.feishu.cn
+  position_path: /index/position
+  max_pages: 2
+  careers_url: https://vrfi1sk8a0.jobs.feishu.cn/index
+  presets: [engineering, product, data, design, operations]
+  why: 大模型公司；飞书招聘（larkhire），核对时一页读到 48 个
+- name: 智谱
+  hq: 北京
+  group: ai_lab
+  ats_type: larkhire
+  board: zhipu
+  origin: https://zhipu-ai.jobs.feishu.cn
+  position_path: /index/position
+  max_pages: 2
+  careers_url: https://zhipu-ai.jobs.feishu.cn/index
+  presets: [engineering, product, data, operations]
+  why: 大模型公司；飞书招聘（larkhire），核对时一页读到 50 个
+- name: 商汤科技
+  hq: 上海
+  group: ai_lab
+  ats_type: larkhire
+  board: sensetime
+  origin: https://sensetime.jobs.feishu.cn
+  position_path: /index/position
+  max_pages: 2
+  careers_url: https://sensetime.jobs.feishu.cn/index
+  presets: [engineering, product, data, operations]
+  why: AI 公司；飞书招聘（larkhire），核对时一页读到 43 个
+
+# ── 外企在华研发 ─────────────────────────────────────────────────────────
+- name: NVIDIA
+  hq: Santa Clara
+  group: foreign_rnd
+  ats_type: workday
+  board: nvidia
+  origin: https://nvidia.wd5.myworkdayjobs.com
+  tenant: nvidia
+  site: NVIDIAExternalCareerSite
+  query: China
+  careers_url: https://nvidia.wd5.myworkdayjobs.com/en-US/NVIDIAExternalCareerSite
+  presets: [engineering]
+  why: 在上海、北京、深圳有研发；Workday，搜 China 读到 218 个
+- name: Intel
+  hq: Santa Clara
+  group: foreign_rnd
+  ats_type: workday
+  board: intel
+  origin: https://intel.wd1.myworkdayjobs.com
+  tenant: intel
+  site: External
+  query: China
+  careers_url: https://intel.wd1.myworkdayjobs.com/External
+  presets: [engineering]
+  why: 在北京、上海有研发；Workday，搜 China 读到 23 个
+- name: Micron
+  hq: Boise
+  group: foreign_rnd
+  ats_type: workday
+  board: micron
+  origin: https://micron.wd1.myworkdayjobs.com
+  tenant: micron
+  site: External
+  query: China
+  careers_url: https://micron.wd1.myworkdayjobs.com/External
+  presets: [engineering]
+  why: 存储芯片；Workday，搜 China 读到 18 个
+- name: Cadence
+  hq: San Jose
+  group: foreign_rnd
+  ats_type: workday
+  board: cadence
+  origin: https://cadence.wd1.myworkdayjobs.com
+  tenant: cadence
+  site: External_Careers
+  query: China
+  careers_url: https://cadence.wd1.myworkdayjobs.com/External_Careers
+  presets: [engineering]
+  why: 芯片设计软件，北京、上海有研发；Workday，搜 China 读到 103 个
+- name: Applied Materials
+  hq: Santa Clara
+  group: foreign_rnd
+  ats_type: workday
+  board: amat
+  origin: https://amat.wd1.myworkdayjobs.com
+  tenant: amat
+  site: External
+  query: China
+  careers_url: https://amat.wd1.myworkdayjobs.com/External
+  presets: [engineering]
+  why: 半导体设备；Workday，搜 China 读到 147 个
+- name: Autodesk
+  hq: San Francisco
+  group: foreign_rnd
+  ats_type: workday
+  board: autodesk
+  origin: https://autodesk.wd1.myworkdayjobs.com
+  tenant: autodesk
+  site: Ext
+  query: China
+  careers_url: https://autodesk.wd1.myworkdayjobs.com/Ext
+  presets: [engineering, product]
+  why: 设计软件，上海有研发；Workday，搜 China 读到 4 个（当天不多）
+- name: Grab
+  hq: Singapore
+  group: foreign_rnd
+  ats_type: smartrecruiters
+  board: Grab
+  careers_url: https://careers.smartrecruiters.com/Grab
+  presets: [engineering, product, data, design]
+  why: 东南亚超级 App，北京有研发中心；SmartRecruiters，读到 449 个（全球）
+- name: Airwallex
+  hq: Melbourne
+  group: foreign_rnd
+  ats_type: ashby
+  board: airwallex
+  careers_url: https://jobs.ashbyhq.com/airwallex
+  presets: [engineering, product, data, design, operations]
+  why: 跨境支付，上海、深圳有团队；Ashby，读到 559 个（全球）
+- name: PingCAP
+  hq: Sunnyvale
+  group: foreign_rnd
+  ats_type: greenhouse
+  board: pingcap
+  careers_url: https://job-boards.greenhouse.io/pingcap
+  presets: [engineering, product]
+  why: TiDB，国内团队在北京、上海、杭州；Greenhouse，读到 7 个
+- name: Zilliz
+  hq: San Francisco
+  group: foreign_rnd
+  ats_type: lever
+  board: zilliz
+  careers_url: https://jobs.lever.co/zilliz
+  presets: [engineering, product]
+  why: 向量数据库 Milvus，上海有研发；Lever，读到 12 个
+
+# ── 海外远程 ─────────────────────────────────────────────────────────────
+# 远程岗位是否招中国大陆的人，要看每个岗位写的地区：只写 US / EU 远程的，入库前会被地点规则挡下（lib/matcher.mjs）。
+- name: GitLab
+  hq: Remote
+  group: overseas_remote
+  ats_type: greenhouse
+  board: gitlab
+  careers_url: https://job-boards.greenhouse.io/gitlab
+  presets: [engineering, product, data, design]
+  why: 全员远程；Greenhouse，读到 198 个
+- name: Canonical
+  hq: London
+  group: overseas_remote
+  ats_type: greenhouse
+  board: canonical
+  careers_url: https://job-boards.greenhouse.io/canonical
+  presets: [engineering, product]
+  why: Ubuntu，大量全球远程岗位，北京也有办公室；Greenhouse，读到 306 个
+- name: Grafana Labs
+  hq: Remote
+  group: overseas_remote
+  ats_type: greenhouse
+  board: grafanalabs
+  careers_url: https://job-boards.greenhouse.io/grafanalabs
+  presets: [engineering, product]
+  why: 可观测性开源，远程优先；Greenhouse，读到 117 个
+- name: Mozilla
+  hq: San Francisco
+  group: overseas_remote
+  ats_type: greenhouse
+  board: mozilla
+  careers_url: https://job-boards.greenhouse.io/mozilla
+  presets: [engineering, product, design]
+  why: Firefox，远程岗位多；Greenhouse，读到 80 个
+- name: Vercel
+  hq: San Francisco
+  group: overseas_remote
+  ats_type: greenhouse
+  board: vercel
+  careers_url: https://job-boards.greenhouse.io/vercel
+  presets: [engineering, product, design]
+  why: Next.js，远程岗位多；Greenhouse，读到 90 个
+- name: PostHog
+  hq: Remote
+  group: overseas_remote
+  ats_type: ashby
+  board: posthog
+  careers_url: https://jobs.ashbyhq.com/posthog
+  presets: [engineering, product]
+  why: 产品分析开源，全员远程；Ashby，读到 8 个
+- name: Supabase
+  hq: Remote
+  group: overseas_remote
+  ats_type: ashby
+  board: supabase
+  careers_url: https://jobs.ashbyhq.com/supabase
+  presets: [engineering, product]
+  why: 开源数据库平台，全员远程；Ashby，读到 52 个
+- name: Zapier
+  hq: Remote
+  group: overseas_remote
+  ats_type: ashby
+  board: zapier
+  careers_url: https://jobs.ashbyhq.com/zapier
+  presets: [engineering, product, data, design]
+  why: 自动化工具，全员远程；Ashby，读到 10 个
+- name: Linear
+  hq: Remote
+  group: overseas_remote
+  ats_type: ashby
+  board: linear
+  careers_url: https://jobs.ashbyhq.com/linear
+  presets: [engineering, product, design]
+  why: 项目管理工具，远程优先；Ashby，读到 30 个
+- name: Binance
+  hq: Remote
+  group: overseas_remote
+  ats_type: lever
+  board: binance
+  careers_url: https://jobs.lever.co/binance
+  presets: [engineering, product, data, operations]
+  why: 加密货币交易所，远程岗位多；Lever，读到 302 个
+- name: CertiK
+  hq: New York
+  group: overseas_remote
+  ats_type: lever
+  board: certik
+  careers_url: https://jobs.lever.co/certik
+  presets: [engineering]
+  why: 区块链安全；Lever，读到 28 个
+
+# ── 读不到，或者还没有适配器（不在包里）──────────────────────────────────────
+# 需要新适配器（自建招聘站，页面是脚本渲染，背后的接口还没核实）：
+#   美团 zhaopin.meituan.com · 京东 zhaopin.jd.com · 快手 zhaopin.kuaishou.cn · 小红书 job.xiaohongshu.com
+#   哔哩哔哩 jobs.bilibili.com · 拼多多 careers.pddglobalhr.com · 百度 talent.baidu.com · 米哈游 jobs.mihoyo.com
+#   小米 hr.xiaomi.com · 阶跃星辰 www.stepfun.com/careers · AMD careers.amd.com（不是 Workday）
+#   Synopsys careers.synopsys.com（Radancy 门面，背后的系统没核实）
+# 读不到：
+#   蚂蚁集团（alitalent）：2026-09-29 社招搜索接口对适配器的请求返回「invalid_parameter：系统繁忙」，换参数也一样
+#   海康威视（publiccareers）：招聘页里当天没有可读的 JobPosting 结构化数据，读到 0 个
+#   Qualcomm（Workday qualcomm.wd12 / External）：搜 China 读到 0 个；它的招聘入口已经搬到 careers.qualcomm.com
+#   Deel（Ashby deel）：这个板当天是空的，板名要再核对
+#   Microsoft（microsoft 适配器）：要借你登录好的专用 Chrome，命令行 dry-run 验不了；登录以后见
+#     config/companies.example.yaml 里的写法

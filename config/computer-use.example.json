@@ -1,0 +1,24 @@
+{
+  "note": "电脑操作驱动与内置操作员（docs/operator.md）。复制成 config/computer-use.json（本机文件，不进仓库）再改；没有本机文件时就用这份模板：所有站点走 codex。drivers 决定一个站点交给谁：codex = Codex 桌面版电脑操作（Chrome）；builtin = 内置操作员（lib/operator，任何 HTTP 模型 + 自己的浏览器，停在提交前）；cua = trycua 的 cua-driver（目前只检测）。per_host 优先于 default；写成列表时按顺序试，前一个报 unavailable 才换下一个。哪些站点允许电脑操作仍由 config/pipeline.json 的 computer_use 决定。operator.model 写「供应商/模型」（config/providers.json 里 anthropic_http / openai_http 类的供应商），或直接写 { \"kind\": \"openai_compat\", \"base_url\": \"http://127.0.0.1:11434/v1\", \"model\": \"qwen2.5vl:7b\", \"api_key_env\": \"…\" }；密钥不要写进这个文件。",
+  "drivers": {
+    "default": [
+      "codex"
+    ],
+    "per_host": {}
+  },
+  "operator": {
+    "backend": "playwright",
+    "channel": "auto",
+    "headless": false,
+    "profile_dir": "private/operator-profile",
+    "provider": null,
+    "model": null,
+    "vision": false,
+    "max_steps": 25,
+    "recipes": true,
+    "stop_before": null
+  },
+  "cua": {
+    "binary": "cua-driver"
+  }
+}

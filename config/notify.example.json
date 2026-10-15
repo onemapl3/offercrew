@@ -1,0 +1,6 @@
+{
+  "note": "飞书私聊通知：user_id 是你本人的 open_id（ou_ 开头），bot_id 是机器人的 open_id。复制成 config/notify.json（本机文件，不进仓库）再填。",
+  "user_id": "",
+  "bot_id": "",
+  "git_push": false
+}

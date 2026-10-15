@@ -1,0 +1,4 @@
+{
+  "note": "供应商目录的本机补充（lib/backends.mjs）：Claude 网关、Claude 官方订阅、~/.codex/config.toml 里的每个 Codex 供应商都会自动出现在目录里；这里只记你在工作台「模型与参数」里加的供应商、改过的名字和模型清单。第一次保存就会建出本机文件 config/providers.json，不进仓库。",
+  "providers": {}
+}

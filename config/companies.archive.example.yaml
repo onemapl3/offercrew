@@ -1,0 +1,3 @@
+# 已归档公司的示例（模板，空）。你自己的归档清单是本机文件 config/companies.archive.yaml（不进仓库），
+# 只在宽扫描（bin/discover.mjs --wide）和找联系人、判断、匹配时与 companies.yaml 合并读取。
+[]

@@ -1,0 +1,35 @@
+{
+  "note": "飞书指挥室的运行参数（lib/concierge.mjs、lib/personas.mjs）。复制成 config/concierge.json（本机文件，不进仓库）再改。指挥室群与系统日志群的 chat_id（oc_ 开头）在接好飞书机器人后填；留空 = 还没接飞书，卡片不发。城市顺序默认取 candidate/facts.yaml 的 location.target_cities，要不同的顺序就在 auto_apply_policy 里写 city_priority。",
+  "enabled": true,
+  "callbacks_enabled": true,
+  "quiet_start": 21,
+  "quiet_end": 9,
+  "task_poll_minutes": 15,
+  "max_new_cards_per_sync": 4,
+  "max_opportunity_cards_per_window": 8,
+  "max_rows_per_card": 3,
+  "interview_mode": "maintained_document",
+  "recommendation_hours": [
+    9,
+    13,
+    18
+  ],
+  "daily_brief_hours": [
+    9,
+    20
+  ],
+  "command_room_chat_id": "",
+  "system_log_chat_id": "",
+  "retired_chat_ids": [],
+  "auto_apply_policy": {
+    "require_batch_review": true,
+    "group_noise_filter": {
+      "verification_codes": "private_only",
+      "application_confirmations": "digest_only"
+    },
+    "require_referrer_search": true,
+    "note": "批准后先填好表、截图、读回字段，停在「终审」等你确认那一版才提交（final_review 默认开；写成 false 才回到批准即提交）。ATS 表单只在该公司找不到内推人时使用（lib/referrers.mjs）；内推人三类来源都可联系。不想投的岗位标题可以写 exclude_title_patterns（正则列表）；不写就按 candidate/facts.yaml 推出的级别来挡（lib/screening.mjs）。",
+    "deal_one_by_one": true
+  },
+  "top_picks_card": true
+}

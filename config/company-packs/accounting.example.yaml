@@ -1,0 +1,176 @@
+# 会计公司包（起步清单）：四大、内资会计师事务所、大厂的财务岗。给「会计」方向用。
+#
+# 这是起步清单，不会自动被扫描：把你想要的那几段复制到 config/companies.yaml（你自己的公司清单，本机文件），
+# 下一轮 node bin/discover.mjs 才会去读。写法和 config/companies.yaml 完全一样，多出来的三项：
+#   group    分组：big4 四大 · cn_cpa_firm 内资所 · corporate_finance 企业财务（大厂等）
+#   presets  这家公司招哪些方向的人：accounting 会计
+#   why      为什么在包里、核对时读到了什么
+#
+# 每一家都在 2026-10-02 用现有适配器只读核过（沙盒、演示数据，先看 robots.txt 放行再读）。
+# 数字的口径：社招、校招、实习三类都读，只数落在北京、上海、深圳、广州、杭州、香港六个城市里的岗位。
+# 平时扫描按你的阶段和城市来：在读的读实习和校招，应届的读校招和社招，有经验的只读社招，数目会不一样。
+# 大厂没有写 queries：按你的会计细分自动换搜索词（审计、会计、税务、财务分析……，lib/directions.mjs），
+# 核对时用的就是这一串，每个词翻两页。
+# 读不到、或者还没有适配器的机构列在文件最后，不在包里。
+
+# ── 四大 ─────────────────────────────────────────────────────────────────
+- name: 德勤中国
+  hq: 上海
+  group: big4
+  ats_type: hotjob
+  origin: https://ehjobs.deloitte.com.cn
+  portal_id: SU649e304a6a9f0ef690533e9a
+  campus_origin: https://wecruit.hotjob.cn
+  campus_portal_id: SU64365a780dcad43c5ae82bab
+  careers_url: https://ehjobs.deloitte.com.cn/SU649e304a6a9f0ef690533e9a/pb/social.html
+  presets: [accounting]
+  why: 四大之一；大易（hotjob），社招一个门户、校招和实习另一个门户。2026-10-02 读到社招 258、校招 144、实习 78
+- name: 普华永道中国
+  hq: 上海
+  group: big4
+  ats_type: moka
+  org_id: pwc
+  site_id: 148260
+  site_path: campus-recruitment
+  careers_url: https://app.mokahr.com/campus-recruitment/pwc/148260
+  presets: [accounting]
+  why: 四大之一；只有校招站能读（Moka，校招和实习在一个站里），社招官网整站被拦截，见文件末尾。2026-10-02 读到校招 75、实习 26
+- name: 安永
+  hq: 上海
+  group: big4
+  ats_type: moka
+  org_id: ey
+  site_id: 102474
+  site_path: social-recruitment
+  careers_url: https://app.mokahr.com/social-recruitment/ey/102474
+  presets: [accounting]
+  why: 四大之一；Moka 社招站。2026-10-02 读到社招 192（香港 31）。两个校招站当天没读到岗位，没写进来，见文件末尾
+- name: 毕马威中国
+  hq: 北京
+  group: big4
+  ats_type: moka
+  org_id: kpmg
+  site_id: 68240
+  site_path: social-recruitment
+  campus_site_id: [76195, 78342]
+  careers_url: https://app.mokahr.com/social-recruitment/kpmg/68240
+  presets: [accounting]
+  why: 四大之一；Moka 社招站，加主校招站和毕马威交付中心（KDC）校招站。2026-10-02 读到社招 216、校招 138
+
+# ── 内资会计师事务所 ──────────────────────────────────────────────────────
+- name: 立信
+  hq: 上海
+  group: cn_cpa_firm
+  ats_type: beisen
+  origin: https://bdochina.zhiye.com
+  portal_id: 27a38864-0636-4841-926f-a5fd0602d0bb
+  careers_url: https://bdochina.zhiye.com/social/jobs
+  presets: [accounting]
+  why: 内资所排名靠前；北森。2026-10-02 读到社招 101、校招 41、实习 24
+- name: 天职国际
+  hq: 北京
+  group: cn_cpa_firm
+  ats_type: beisen
+  origin: https://tzcpa.zhiye.com
+  portal_id: a3718c51-2d98-462f-ab83-1e5241b8fed5
+  careers_url: https://tzcpa.zhiye.com/social/jobs
+  presets: [accounting]
+  why: 内资所里岗位最多的一家；北森。2026-10-02 读到社招 130、校招 46、实习 10
+- name: 大华会计师事务所
+  hq: 北京
+  group: cn_cpa_firm
+  ats_type: beisen
+  origin: https://zhaopin.dahua-cpa.com
+  portal_id: b30533ad-bc5c-47bc-87c9-53d379aed9ad
+  careers_url: https://zhaopin.dahua-cpa.com/social/jobs
+  presets: [accounting]
+  why: 内资所；北森（挂在自己域名上），实习放在校招类别里，适配器按标题分出来。2026-10-02 读到社招 18、实习 6
+- name: 中汇
+  hq: 杭州
+  group: cn_cpa_firm
+  ats_type: beisen
+  origin: https://zhcpa.zhiye.com
+  portal_id: 54eb3d06-fab0-49d0-8b35-59dcdb00d7d0
+  careers_url: https://zhcpa.zhiye.com/home
+  presets: [accounting]
+  why: 内资所，总部杭州；北森。2026-10-02 读到社招 53、校招 7
+- name: 大信
+  hq: 北京
+  group: cn_cpa_firm
+  ats_type: beisen
+  origin: https://daxincpa.zhiye.com
+  portal_id: c818a775-34a5-479f-9430-f191d897af05
+  careers_url: https://daxincpa.zhiye.com/
+  presets: [accounting]
+  why: 内资所；北森，实习放在校招类别里。2026-10-02 读到社招 25、校招 9、实习 8
+
+# ── 企业财务（大厂）────────────────────────────────────────────────────────
+- name: 字节跳动
+  hq: 北京
+  group: corporate_finance
+  ats_type: larkhire
+  board: bytedance
+  origin: https://jobs.bytedance.com
+  position_path: /experienced/position
+  max_pages: 2
+  careers_url: https://jobs.bytedance.com/experienced/position
+  presets: [accounting]
+  why: 大厂里财务岗最多；飞书招聘（larkhire），按会计的搜索词每个词翻两页，2026-10-02 读到社招 311（标题要再筛）
+- name: 阿里巴巴集团
+  hq: 杭州
+  group: corporate_finance
+  ats_type: alitalent
+  board: alibaba
+  origin: https://talent.alibaba.com
+  detail_origin: https://talent-holding.alibaba.com
+  max_pages: 2
+  careers_url: https://talent-holding.alibaba.com/off-campus/position-list?lang=zh
+  presets: [accounting]
+  why: 大厂；阿里系招聘站（alitalent），按会计的搜索词，2026-10-02 读到社招 69
+- name: 腾讯
+  hq: 深圳
+  group: corporate_finance
+  ats_type: tencent
+  board: tencent
+  origin: https://careers.tencent.com
+  max_pages: 2
+  careers_url: https://careers.tencent.com/search.html
+  presets: [accounting]
+  why: 大厂；腾讯招聘（tencent），按会计的搜索词，2026-10-02 读到社招 34、校招 8、实习 9
+- name: 网易
+  hq: 杭州
+  group: corporate_finance
+  ats_type: netease
+  board: netease
+  origin: https://hr.163.com
+  max_pages: 2
+  careers_url: https://hr.163.com/job-list.html
+  presets: [accounting]
+  why: 大厂；网易招聘（netease），按会计的搜索词，2026-10-02 读到 57 个
+- name: 蔚来
+  hq: 上海
+  group: corporate_finance
+  ats_type: larkhire
+  board: nio
+  origin: https://nio.jobs.feishu.cn
+  position_path: /index/position
+  max_pages: 2
+  careers_url: https://nio.jobs.feishu.cn/index
+  presets: [accounting]
+  why: 智能电动车，财务、税务、审计岗不少；飞书招聘（larkhire），按会计的搜索词，2026-10-02 读到社招 60
+
+# ── 没收进来的（不在包里）────────────────────────────────────────────────────
+# 只放入口（自己打开看，不自动读）：
+#   普华永道社招 www.pwccn.com/zh/careers.html：整站返回 403（连 robots.txt 也是），全球 Workday 上只有个别上海共享中心岗位
+#   天健 zhaopin.pccpa.cn：自建，列表接口当天报错
+#   容诚 careers.rccpa.com.cn：岗位列表要登录
+#   致同 www.grantthornton.cn/careers：校招系统 cr.gt-china.com.cn 打不开
+#   中审众环 www.zszhcpa.cn/Jobopportunities/list.html：招聘系统的证书过期
+#   中兴华 www.zxhcpa.com.cn：只有一张静态页，投递不走招聘系统
+# 要新写适配器：
+#   信永中和 job.shinewing.com：自建站，有公开接口（社招、校招都有）
+#   博世 SmartRecruiters（BoschGroup）：全球四千多个岗位，适配器还不能按国家筛
+# 当天 0 个：
+#   安永两个校招站（careers.ey.com.cn、hkcareers.ey.com.cn，Moka 166374、168333）：2026-10-02 读到 0 个
+# 没写进来：
+#   毕马威的校园大使站（Moka 143094）：是校园大使项目，不是岗位

@@ -1,0 +1,4 @@
+{
+  "note": "手机中转：默认用 OfferCrew 的中转（下面这个地址），不用改。用自己部署的中转（relay/phone/DEPLOY.md）：复制成 config/phone.json（本机文件，不进仓库），relay 填你的中转网址。不想用手机：config/phone.json 里 relay 写 off。",
+  "relay": "https://offercrew.onemaple.cc"
+}

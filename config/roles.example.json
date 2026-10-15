@@ -1,0 +1,21 @@
+{
+  "roles": {
+    "radar": {
+      "chat": null,
+      "text": []
+    },
+    "watch": {
+      "chat": null,
+      "text": []
+    },
+    "reacher": {
+      "chat": null,
+      "text": []
+    },
+    "system": {
+      "chat": null,
+      "text": []
+    }
+  },
+  "note": "每个角色可单独指定对话默认底座（chat，写 供应商/模型）和文字生成清单（text，[{provider, model, effort}]）；空 = 跟随全局（config/chat.json default、config/model.json text.backends）。在工作台「模型与参数 → 角色底座」里改；改过之后就是本机文件 config/roles.json，不进仓库。"
+}

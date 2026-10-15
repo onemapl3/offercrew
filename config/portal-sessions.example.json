@@ -1,0 +1,9 @@
+{
+  "note": "招聘门户、平台的登录记录（系统写，本机文件 config/portal-sessions.json，不进仓库）。你点「我登好了」、系统在浏览器里自动看到已登录、执行器投递前实地探测，都会写到这里：logged_in / verified_at。新装时是空的——没登录过的账号显示「没记录」，不是「没登录」。never_auto 的域名（Workday）账号只由本人注册 / 登录，系统不代注册；本人登录后点「我登好了」，这个租户记为已登录，已「投」批准的岗位就能由系统提交（lib/apply-channel.mjs portalSession）。",
+  "never_auto": [
+    "myworkdayjobs.com",
+    "myworkdaysite.com"
+  ],
+  "never_auto_reason": "Workday 每个租户都要单独注册候选人账号并设密码，不能代填。",
+  "domains": {}
+}

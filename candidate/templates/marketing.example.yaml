@@ -1,0 +1,150 @@
+# 示例资料 · 市场 + 运营（虚构的示例人物，不能原样复制）
+#
+# 一位国内市场营销专业毕业、工作一年多的品牌营销：现在做新品的内容投放和会员社群，之前有半年电商用户运营实习，
+# 业余从 0 做过一个小红书账号；想在上海或杭州找品牌营销、内容 / 用户运营的岗位。人、公司、学校、邮箱、电话全是编的。
+# 「开始使用 → 你的方向 → 看示例」打开的就是它。不要把它复制成 candidate/facts.yaml 就开始用——已经有值的项，
+# 导入简历时默认不覆盖，一不留神就还是示例人物的名字和邮箱；outreach、positioning、standard_answers 这几段
+# 页面上改不到，会原样进你的首联和私信。先在「开始使用」导入简历（或点「编辑」手填）生成你自己的文件，
+# 再参照这里，把用得上的段落抄过去，逐项改成你自己的话。
+#
+# 市场 / 运营方向特别要填的（招聘方先看这几样，判断岗位时也按它们来）：
+#   - 数据成绩：current_work 的职责和 career_highlights 的每一条都尽量带数字——曝光、互动率、转化率、
+#     复购率、拉新人数、GMV、获客成本降了多少；
+#   - 作品：personal_projects 写你自己做过的账号、活动、案例，附上链接（identity.github 一栏可以放作品集）；
+#   - preferences.directions：主方向写在第一个，想顺带看的方向跟在后面（这里是 市场 + 运营）；
+#   - certifications：和岗位相关的证书写上（Google Analytics 认证、英语六级……），状态照原话写。
+
+identity:
+  name_en: Casey Example
+  name_zh: 周示例
+  email: casey.example@example.com # 印在简历上的邮箱
+  phone_cn: "+86 139 0000 0000"
+  github: https://portfolio.example.com/casey # 作品集 / 个人主页（字段名沿用 github）
+  over_18: true
+
+location:
+  current_city: 上海 # 现居城市
+  target_cities: [ 上海, 杭州 ] # 想在哪些城市工作，按优先级
+  relocation_ok: 长三角其他城市可以考虑 # 原话，给判断模型读
+  work_mode_preference: [ hybrid, onsite ] # 按优先级
+  onsite_5days_acceptable: true
+  travel_ok: 可以短期出差（活动、拍摄）
+
+work_authorization:
+  china_mainland: citizen
+  us: none
+
+availability:
+  current_status: 在职 # 应届 / 在读 / 在职 / 已离职，照实写
+  notice_period_days: 30
+  earliest_start: 接 offer 后 30 天
+
+compensation:
+  currency_primary: CNY
+  expected_annual_cny: 18 万–22 万，可谈 # 写区间或底线
+  floor_annual_cny: 16 万
+  current_annual_cny: prefer_not_to_disclose
+
+preferences:
+  directions: [ marketing, operations ] # 求职方向，第一个是主方向
+  role_families: # 自由文字的补充说明，给判断模型读；不写也行
+    - 品牌营销 / 新媒体营销
+    - 内容运营、用户运营
+  company_priority: [ 消费品牌, 互联网平台, 营销 / 广告公司 ]
+  hard_exclusions:
+    - 电话销售、纯地推
+    - 需要长期驻外的活动执行
+  soft_exclusions: 明确大小周或单休的公司
+
+resume_routing: # 简历 PDF（仓库内相对路径）；只有一份就两项写同一个文件
+  english_pdf: candidate/周示例-简历.pdf
+  chinese_pdf: candidate/周示例-简历.pdf
+  rule: 只有中文简历，两种岗位都用它
+
+standard_answers: # 申请表常见问题的固定回答
+  why_leaving: 想做更完整的品牌和用户增长工作
+  biggest_strength: 会做内容也会看数据，每次投放都复盘
+  management_experience: no
+  referral_source_default: 公司官网 / 招聘平台
+  relatives_at_company: false
+  previously_applied_default: false
+  background_check_ok: true
+  languages: [ 中文（母语）, 英语（六级，可读写） ]
+
+alumni_networks: # 校名 / 前公司，判断校友与前同事时用
+  - 示例大学（市场营销本科，2021-2025）
+
+current_work:
+  company: Fabrikam 消费品有限公司
+  title: 品牌营销专员
+  start: 2025-07
+  focus: 新品上市的内容与投放、会员社群
+  responsibilities:
+    - area: 内容与投放
+      work:
+        - 负责 3 个新品在小红书、抖音的内容投放，单季度曝光 1200 万，互动率 4.8%（品类平均 2.9%）。
+        - 每周复盘投放数据，把低效渠道的预算挪到达人合作，获客成本下降 22%。
+    - area: 用户运营
+      work:
+        - 搭会员社群的运营 SOP，6 个月里社群复购率从 18% 提到 27%。
+
+career_highlights: # 实习和以前的工作，按时间倒序
+  entries:
+    - company: Northwind 电商
+      dates: 2024-07 至 2024-12
+      role: 用户运营实习生
+      evidence:
+        - 策划 4 场会员日活动，拉新 3200 人，活动 GMV 45 万元。
+        - 用 Excel 和 SQL 做用户分层，给高价值用户推专属券，核销率 31%。
+
+personal_projects: # 作品：自己做的账号、活动、案例
+  entries:
+    - name: 一个家居收纳小红书账号
+      ownership: 个人业余运营
+      evidence: 从 0 做到 1.2 万粉丝，3 篇笔记阅读量超过 10 万；复盘过选题和发布时间对互动率的影响。
+      relevance: [ 内容运营, 数据复盘 ]
+      url: https://portfolio.example.com/casey/notes
+
+education:
+  - school: 示例大学
+    degree: 市场营销 管理学学士
+    dates: 2021-09 至 2025-06
+    gpa: "3.6/4.0"
+
+certifications: # 证书：name + status（原话）+ 可选的 date
+  - { name: Google Analytics 认证, status: 已通过, date: 2024-05 }
+  - { name: 英语六级（CET-6）, status: 已通过 }
+  - { name: 全国计算机二级（MS Office）, status: 已通过 }
+
+skills: [ 小红书 / 抖音内容策划, 投放数据复盘, Excel（数据透视表、VLOOKUP）, SQL（基础查询）, 剪映, Canva, 飞书多维表格 ]
+
+experience_summary:
+  years: 1 # 全职年限（实习另算）
+  outreach_wording: 1 年多品牌营销经验，另有半年电商运营实习 # 中文信里的年限说法
+  outreach_wording_en: over a year in brand marketing, plus a six-month e-commerce operations internship
+  calculation: 按简历任职年月估算
+  rules:
+    - 实习照实写成实习，不算进全职年限。
+
+positioning: # 所有材料、申请信、自我介绍按这里讲
+  headline: 会做内容、也会看数据的品牌营销
+  lead_with: 新品内容投放的数据成绩 + 从 0 做起的个人账号
+  project_priority: # 讲经历时按这个顺序引用
+    - name: 一个家居收纳小红书账号
+      why: 从 0 做起，能讲清楚选题和复盘的方法
+      use_for: 内容运营、新媒体岗位
+    - name: 新品内容投放（Fabrikam）
+      why: 曝光、互动率、获客成本都有数字
+      use_for: 品牌营销、投放岗位
+
+# 对外短消息和判断模型里用到的本人说法。缺哪一项，消息里就不写那一句，不会编。
+outreach:
+  education: 示例大学市场营销本科 # 「我是某某，」后面的学历
+  current_role: 品牌营销（新品内容与投放） # 「现职做……」
+  extra: 之前在 Northwind 电商做过用户运营实习 # 平台私信里接在现职后面的一句
+  intro: 我做品牌营销和内容运营 # 脉脉加好友附言（50 字以内）的自我介绍
+  project_line: 从0做过一个1.2万粉的小红书账号 # 附言里的项目一句
+  project_line_short: 做过1.2万粉的小红书账号 # 字数紧时用的短写法
+  school_names: # 判断对方是不是校友时认的学校叫法，一所一行
+    - 示例大学
+  language_evidence: 中文母语，英语六级，能读写英文资料 # 判断语言要求时引用的那条证据

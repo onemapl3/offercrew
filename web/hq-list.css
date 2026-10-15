@@ -1,0 +1,56 @@
+/* List controls and company summaries. All filtering precedes the 50-row page. */
+/* Sorting lives in the existing column headings, with no separate toolbar. */
+.hq-col-sort{display:inline-flex;align-items:center;gap:5px;padding:0;min-height:32px;border:0;background:transparent;color:inherit;font:inherit;cursor:pointer;text-align:left}
+.hq-col-sort>span{font-size:11px;opacity:.55}
+.hq-th [aria-sort]:not([aria-sort="none"]){color:var(--ink);font-weight:600}
+.hq-th [aria-sort]:not([aria-sort="none"]) .hq-col-sort>span{opacity:1}
+.hq-col-sort:hover{color:var(--green)}
+.hq-city>button{max-width:170px;overflow:hidden;text-overflow:ellipsis}
+.hq-city-pop{width:220px;max-width:calc(100vw - 40px);text-align:left}
+.hq-city-options{max-height:280px;overflow-y:auto;padding:4px}
+.hq-city-options label{display:flex;align-items:center;gap:9px;min-height:34px;padding:4px 7px;border-radius:6px;cursor:pointer;font-size:13px;font-weight:400}
+.hq-city-options label:hover{background:var(--green-soft)}
+.hq-city-options .hq-chk{flex:none;margin:0}
+.hq-city-pop>button{margin-top:4px;border-top:1px solid var(--line-soft);color:var(--green)}
+.hq-city-pop>button:hover:not(:disabled){background:var(--green-soft);color:var(--green)}
+.hq-city-pop>button:disabled{color:var(--faint);cursor:default}
+.hq-city button:focus-visible,.hq-city input:focus-visible,.hq-filter button:focus-visible,.hq-filter input:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+.hq .hq-th .hq-c-steps{display:block;text-align:center}
+.hq .hq-c-now{flex-wrap:wrap;row-gap:3px}
+.hq-row-time{flex-basis:100%;font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.3}
+.hq .hq-grp{height:auto;min-height:56px;padding-top:8px;padding-bottom:8px;align-items:center;background:var(--paper,#fff);border-bottom:1px solid var(--line-soft)}
+.hq .hq-g-n{display:flex;flex-direction:column;align-items:stretch;gap:3px;white-space:normal;line-height:1.4}
+.hq-group-title{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 12px}
+.hq-group-summary{line-height:1.5;overflow-wrap:anywhere}
+.hq .hq-rows{scroll-padding-top:72px}
+/* A page has at most 50 rows: paint them normally so narrow-page scroll cannot leave skipped-content gaps. */
+.hq .hq-row{height:auto;min-height:68px;padding-top:8px;padding-bottom:8px;content-visibility:visible;contain-intrinsic-size:none}
+.hq-list-reason{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere;color:var(--muted);font-size:12px;line-height:1.45}
+.hq-selection-scope{font-size:12px;color:var(--amber-ink,#8a5a12)}
+.hq-pagination{flex:none;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 12px;padding:12px 4px 4px;border-top:1px solid var(--line-soft);font-size:12px;font-variant-numeric:tabular-nums}
+.hq-page-range{color:var(--muted)}
+.hq-pagination>div{display:flex;align-items:center;flex-wrap:wrap;gap:4px}
+.hq-pagination button{min-width:30px;min-height:32px;padding:4px 9px;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--ink);font:inherit;cursor:pointer}
+.hq-pagination button:hover:not(:disabled){background:var(--hover)}
+.hq-pagination button[aria-current]{background:var(--green-soft);color:var(--green);border-color:var(--green);font-weight:650}
+.hq-pagination button:disabled{opacity:.45;cursor:default}
+.hq-pagination button:focus-visible,.hq-col-sort:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+@container main (max-width:620px){
+  .hq .hq-grp{min-height:64px}.hq-group-title{gap:2px 8px}.hq .hq-rows{scroll-padding-top:80px}
+}
+@media (max-width:700px){
+  .hq .hq-h{flex-wrap:wrap}.hq .hq-tools{width:100%;flex-wrap:wrap}.hq .hq-tools .hq-search{display:block;flex:1;min-width:120px}
+  .hq-city>button{max-width:150px}.hq-city-pop{left:0;right:auto}
+  .hq-filter .hq-city-pop{width:180px;left:auto;right:0}
+  /* Recovery notes share the action area; keep that area below the job on phones. */
+  .hq .hq-row{grid-template-columns:var(--chk-w,22px) minmax(0,1fr);grid-template-areas:"chk job" "chk steps" "chk act"}
+  .hq .hq-th{display:grid;grid-template-columns:minmax(0,1fr) 76px 86px;height:36px}
+  .hq .hq-th>.hq-c-chk,.hq .hq-th>.hq-c-ch,.hq .hq-th>.hq-c-steps,.hq .hq-th>.hq-c-act{display:none}
+  .hq .hq-th>.hq-c-prog{display:block}
+  .hq .hq-row>.hq-c-now{height:auto}
+  .hq .hq-row>.hq-c-act{min-width:0;grid-template-columns:repeat(2,minmax(0,max-content));justify-content:start}
+  .hq .hq-action-note{grid-column:1/-1;overflow-wrap:anywhere}
+  .hq-col-sort{min-height:36px}.hq-pagination>div{gap:3px}.hq-pagination button{min-width:30px;min-height:40px;padding:4px 8px}
+}
+
+@media (min-width:701px){@container hqpipe (max-width:879px){.hq .hq-th .hq-c-steps{display:none}}}
