@@ -18,7 +18,7 @@ OfferCrew 是在 Mac 上运行的 AI 求职助手。六位成员围绕同一份�
 
 **自动预填，你来提交。** 申请表预填后由你检查、提交；邮件和私信提供草稿审阅、确认与结果回执。
 
-本仓库提供 **0.2.0 完整客户端源码**，采用 [PolyForm Perimeter 1.0.1](LICENSE)，属于**源码可用（source-available）**项目。商业中转服务端不在公开范围内。
+本仓库提供 **0.2.0 完整客户端源码**，采用 [PolyForm Perimeter 1.0.1](LICENSE)，属于 **源码可用（source-available）** 项目。商业中转服务端不在公开范围内。
 
 ![OfferCrew 指挥台：按公司查看岗位、材料与申请进度，右侧与成员对话（官网公开演示数据）](docs/images/command.png)
 
